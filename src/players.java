@@ -1,8 +1,8 @@
 /**
  * Created by Kyle on 28/08/2016.
  */
-//
-//public class players{
+
+public class players{
 //    public static void main(String args[]) {
 //
 //    System.out.print("How many Payers? :");
@@ -22,14 +22,26 @@
 //    }
 //    Player.numberOfPlayers();
 //    }
-//}
+}
 class Player {
     private static int count = 0;
-    public Player(){
+    private hand hand;
+    private static String name;
+    private final int id;
+
+    public Player() {
         count++;
+        id = count;
+        name = "Player" + id;
+        hand = new hand();
+
     }
-    public static void numberOfPlayers(){
-        System.out.println(count);
+
+    public static void numberOfPlayers() {
+
+        System.out.println("Number of players is: " + count);
+        System.out.println(name);
+
     }
 }
 

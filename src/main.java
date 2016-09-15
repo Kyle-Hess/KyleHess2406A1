@@ -4,6 +4,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -15,6 +16,7 @@ public class main {
         deck instance = null;
         try {
             instance = new deck();
+            Collections.shuffle(instance.deckArray);
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -42,10 +44,8 @@ public class main {
         for(int i = 0; i < amount; i++) {
             players[i] = new Player();
         }
-        System.out.println("number of players is:");
         Player.numberOfPlayers();
-
-
+        hand.setCards();
 
         System.out.println("while loop begins. q to quit");
         Scanner keyboard = new Scanner(System.in);

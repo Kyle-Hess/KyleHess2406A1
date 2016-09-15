@@ -11,6 +11,10 @@ class cards {
         this.title = in_name;
     }
 
+    public cards() {
+
+    }
+
     public String toString() {
         return ("This element is " + this.title);
     }

@@ -1,6 +1,7 @@
 /**
  * Created by Kyle on 10/09/2016.
  */
+
 import com.dd.plist.*;
 import org.xml.sax.SAXException;
 
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class deck {
+public class deck extends cards {
     public ArrayList<cards> deckArray = new ArrayList();
 
     deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {

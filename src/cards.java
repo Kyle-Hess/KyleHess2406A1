@@ -18,18 +18,20 @@ class cards {
     public String toString() {
         return ("This element is " + this.title);
     }
+
+
 }
 
 class MineralCard extends cards {
-    NSString chemistry;
-    NSString classification;
-    NSString crystal_system;
-    NSArray occurrence;
-    NSString hardness;
-    NSString specific_gravity;
-    NSString cleavage;
-    NSString crystal_abundance;
-    NSString economic_value;
+    private NSString chemistry;
+    private NSString classification;
+    private NSString crystal_system;
+    private NSArray occurrence;
+    private NSString hardness;
+    private NSString specific_gravity;
+    private NSString cleavage;
+    private NSString crystal_abundance;
+    private NSString economic_value;
 
     MineralCard(NSString in_name, NSString in_class1, NSString in_class2, NSString in_class3, NSArray in_class4, NSString in_class5, NSString in_class6, NSString in_class7, NSString in_class8, NSString in_class9) {
         super(in_name);

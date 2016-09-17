@@ -10,12 +10,15 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class deck extends cards {
-    public ArrayList<cards> deckArray = new ArrayList();
+    public ArrayList<cards> deckArray;
 
-    deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {
-
+    public deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {
+        deckArray = new ArrayList<cards>();
+        Collections.shuffle(deckArray);
         try {
             Integer cardCounter = -1;
             Integer trumpCounter = 53;
@@ -66,5 +69,38 @@ public class deck extends cards {
         for (cards i: deckArray) {
             System.out.println(i.toString());
         }
+    }
+
+    public int size(){
+        return deckArray.size();
+    }
+
+    public ArrayList<cards> dealCards(int numCards) {
+        ArrayList<cards> ret = new ArrayList<cards>();
+        for (int i = 0; i < numCards; i++){
+            int idx = new Random().nextInt(deckArray.size());
+            cards card = deckArray.remove(idx);
+            ret.add(card);
+            //System.out.println("card " +card);
+        }
+        return ret;
+    }
+    public cards drawCard(){
+        Collections.shuffle(deckArray);
+        if (deckArray.size()==0){
+            System.out.println("Out of cards");
+            return null;
+        }
+        else {
+            cards temp = (cards) deckArray.get(deckArray.size()-1);
+            deckArray.remove(deckArray.size()-1);
+            System.out.println("Card: " + temp + "* Was drawn * \n"
+                    + "=====================");
+            return temp;
+        }
+    }
+
+    public void printDeck() {
+        System.out.println(deckArray);
     }
 }

@@ -1,10 +1,3 @@
-import com.dd.plist.PropertyListFormatException;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -12,66 +5,79 @@ import java.util.Scanner;
  */
 public class main {
     public static void main(String[] args) {
+        main trumpGame = new main();
+    }
 
-        deck instance = null;
-        try {
-            instance = new deck();
-            Collections.shuffle(instance.deckArray);
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (PropertyListFormatException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//instance.print();
-        System.out.println(instance.deckArray.get(0).toString());
-        System.out.println(instance.deckArray.size());
-        //System.out.println(instance.deckArray);
+    public Scanner input = new Scanner(System.in);
 
+    public main() {
+        run();
 
-        // asks for the amount of players, to create player objects
+    }
 
-        System.out.println("How Many players? (3 to 5) ");
-        Scanner input = new Scanner(System.in);
-        int amount = input.nextInt();
+    public void run() {
+        boolean running = true;
+        while (running) {
+            System.out.println("Welcome");
+            gameStart();
 
-        Player[] players = new Player[amount];
-        for(int i = 0; i < amount; i++) {
-            players[i] = new Player();
-        }
-        Player.numberOfPlayers();
-        hand.setCards();
-
-        System.out.println("while loop begins. q to quit");
-        Scanner keyboard = new Scanner(System.in);
-        String choice2 = keyboard.nextLine();
-        char c = choice2.charAt(0);
-        while (c != 'q'){
-
-            System.out.println(choice2);
-
-
+            System.out.println("game ends");
+            System.out.println("play again? y/n");
+            boolean validResponse = false;
+            while (!validResponse) {
+                String response = input.nextLine();
+                switch (response) {
+                    case "y":
+                        validResponse = true;
+                        running = true;
+                        break;
+                    case "n":
+                        validResponse = true;
+                        running = false;
+                        break;
+                    default:
+                        validResponse = false;
+                        break;
+                }
+            }
         }
     }
 
-//    public static void playerInput( ) {
-//        System.out.println("How Many players? (3 to 5) ");
-//        Scanner input = new Scanner(System.in);
-//        int choice = input.nextInt();
-//
-//        if (choice > 3 || choice < 5 ){
-//            System.out.println("something");
-//        } else {
-//            System.out.println("Error");
-//        }
-//
-//    }
-//
-//    }
+    public void gameStart() {
 
+        System.out.println("How Many Player? (3 to 5) ");
+        Scanner input = new Scanner(System.in);
+        int amount = input.nextInt();
+
+        int numPlayers = getNumPlayers(amount);
+        game game = new game(numPlayers);
+        game.printDeckSize();
+        System.out.println("cards in deck");
+        //game.dealer();
+        game.dealCards();
+
+        //game.selectPlayer();
+//        player[] showsAPlayer = game.getPlayer();
+//        showPlayer(showsAPlayer);
+
+        System.out.println("== Game is starting ==");
+        int cardNum = getPlayersCard(amount);
+        game.playGame(cardNum);
+        System.out.println(cardNum);
+
+    }
+
+    private int getPlayersCard(int amount) {
+        return amount;
+    }
+
+    private void showPlayer(player[] plays) {
+        System.out.println(plays +"\n");
+    }
+
+    private int getNumPlayers(int amount) {
+        int i = amount;
+        System.out.println("Players in game: "+i);
+        return i;
+    }
 }

@@ -19,31 +19,73 @@ class cards {
         return ("This element is " + this.title);
     }
 
-
 }
 
 class MineralCard extends cards {
-    private NSString chemistry;
-    private NSString classification;
-    private NSString crystal_system;
+    private String chemistry;
+    private String classification;
+    private String crystal_system;
     private NSArray occurrence;
-    private NSString hardness;
-    private NSString specific_gravity;
-    private NSString cleavage;
-    private NSString crystal_abundance;
-    private NSString economic_value;
+    private String hardness;
+    private String specific_gravity;
+    private String cleavage;
+    private String crystal_abundance;
+    private String economic_value;
 
-    MineralCard(NSString in_name, NSString in_class1, NSString in_class2, NSString in_class3, NSArray in_class4, NSString in_class5, NSString in_class6, NSString in_class7, NSString in_class8, NSString in_class9) {
-        super(in_name);
-        this.chemistry = in_class1;
-        this.classification = in_class2;
-        this.crystal_system = in_class3;
-        this.occurrence = in_class4;
-        this.hardness = in_class5;
-        this.specific_gravity = in_class6;
-        this.cleavage = in_class7;
-        this.crystal_abundance = in_class8;
-        this.economic_value = in_class9;
+    MineralCard(NSString title, NSString chemistry1, NSString classification2, NSString crystalSystem3, NSArray occurrence4, NSString hardness5, NSString specificGravity6, NSString cleavage7, NSString crystalAbundance8, NSString economicValue9) {
+        super(title);
+        this.chemistry = chemistry1.toString();
+        this.classification = classification2.toString();
+        this.crystal_system = crystalSystem3.toString();
+        this.occurrence = occurrence4;
+        this.hardness = hardness5.toString();
+        this.specific_gravity = specificGravity6.toString();
+        this.cleavage = cleavage7.toString();
+        this.crystal_abundance = crystalAbundance8.toString();
+        this.economic_value = economicValue9.toString();
+    }
+
+    public  int getHardnessAsInt(String hardness){
+        int hardnessValue = 0;
+        switch (hardness){
+            case "1":return 1;
+            case "2":return 2;
+            case "3":return 3;
+
+        }return hardnessValue;
+    }
+
+    public  int getSpecificGravity(String specific_gravity){
+        int sgValue = 0;
+        switch (specific_gravity){
+            case "1":return 1;
+        }return  sgValue;
+    }
+
+    public int getCleavage(String cleavage){
+        int cleavageValue=0;
+        switch (cleavage){
+            case "1":return 1;
+        }return cleavageValue;
+    }
+
+    public int getCrystalAbundance(String crystal_abundance){
+        int caValue = 0;
+        switch (crystal_abundance){
+            case "1":return 1;
+        }return caValue;
+    }
+
+    public int getEconomicValueAsInt(String economicValue){
+        int economicAsInt = 0;
+        switch (economicValue){
+            case "trivial": return 1;
+            case "low": return 2;
+            case "moderate": return 3;
+            case "high": return 4;
+            case "very high": return 5;
+            case "I'm rich": return 6;
+        }return economicAsInt;
     }
 
     @Override
@@ -65,4 +107,6 @@ class TrumpCard extends cards {
     public String toString() {
         return ("This Trump Card is " + this.title + "\n Description: " + this.subtitle + "\n");
     }
+
+
 }

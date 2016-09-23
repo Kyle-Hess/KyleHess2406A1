@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
 /**
- * Created by Kyle on 28/08/2016.
+ * Created by Kyle on 16/09/2016.
  */
 public class player {
     private ArrayList<cards> cards;
     private String playerId;
+    private int n;
 
     public player(String playerId) {
         this.playerId = playerId;
@@ -23,6 +24,15 @@ public class player {
 
     }
 
+    public void playersCards() {//shows players cards
+        System.out.println(playerId + "'s turn. " + "Cards: "+cards.size());
+        for (cards card :cards) {
+
+            
+            System.out.println("card: "+n+"\n" +card.toString());
+            n++;
+        }
+    }
 
     public String toString(){
         return playerId +"\n"+"cards: " + cards + "\n" ;

@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+/**
+ * Created by Kyle on 16/09/2016.
+ */
 public class game {
     private static final int NUM_CARDS = 8;
     private int numPlayers;
@@ -31,10 +34,6 @@ public class game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void printDeckSize(){
-        System.out.println("Cards in deck : "+deck.size());
     }
 
     public void dealer() {
@@ -70,29 +69,25 @@ public class game {
 
     public int playGame(int cardNum) {
         boolean inGame = true;
-        topCard = deck.drawCard();
+        //topCard = deck.drawCard();
         while (inGame){
 
             for (int i = 0; i<numPlayers;i++ ){
                 players[i].turn(topCard);
                 cards temp = topCard;
-                System.out.println("* Place a card. *");
+                //System.out.println("* Place a card. *");
                 break;
             }
             break;
         }
         return 0;
     }
-
-    public static int getEconomicValueAsInt(String economicValue){
-        int economicAsInt = 0;
-        switch (economicValue){
-            case "trivial": return 1;
-            case "low": return 2;
-            case "moderate": return 3;
-            case "high": return 4;
-            case "very high": return 5;
-            case "I'm rich": return 6;
-        }return economicAsInt;
+    public void showCards() {//Shows Players cards
+        for (int i = 0; i<numPlayers;i++ ){
+            players[i].playersCards();{
+            }
+            break;
+        }
     }
+
 }

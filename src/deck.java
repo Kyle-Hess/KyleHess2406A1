@@ -99,8 +99,4 @@ public class deck extends cards {
             return temp;
         }
     }
-
-    public void printDeck() {
-        System.out.println(deckArray);
-    }
 }

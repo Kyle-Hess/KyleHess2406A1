@@ -5,20 +5,20 @@ import java.util.Scanner;
  */
 public class main {
     public static void main(String[] args) {
-        main trumpGame = new main();
+
+        main t = new main();
+
     }
 
     public Scanner input = new Scanner(System.in);
 
     public main() {
         run();
-
     }
 
     public void run() {
         boolean running = true;
         while (running) {
-            System.out.println("Welcome");
             gameStart();
 
             System.out.println("game ends");
@@ -51,8 +51,6 @@ public class main {
 
         int numPlayers = getNumPlayers(amount);
         game game = new game(numPlayers);
-        game.printDeckSize();
-        System.out.println("cards in deck");
         //game.dealer();
         game.dealCards();
 
@@ -61,7 +59,10 @@ public class main {
 //        showPlayer(showsAPlayer);
 
         System.out.println("== Game is starting ==");
-        int cardNum = getPlayersCard(amount);
+        game.showCards();
+        //====
+        System.out.println("* Place a card. *");
+        int cardNum = input.nextInt();
         game.playGame(cardNum);
         System.out.println(cardNum);
 
@@ -77,7 +78,7 @@ public class main {
 
     private int getNumPlayers(int amount) {
         int i = amount;
-        System.out.println("Players in game: "+i);
+        System.out.println("Players: "+i);
         return i;
     }
 }

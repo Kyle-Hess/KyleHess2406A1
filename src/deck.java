@@ -43,7 +43,7 @@ public class deck extends cards {
                 NSString crustalAbundance8 = (NSString) card0.objectForKey("crustal_abundance");
                 NSString economicValue9 = (NSString) card0.objectForKey("economic_value");
 
-                deckArray.add(new MineralCard(title1, chemistry1, classification2, crystalSystem3, occurrence4, hardness5, specificGravity6, cleavage7, crustalAbundance8, economicValue9));
+                deckArray.add(new cards(title1, chemistry1, classification2, crystalSystem3, occurrence4, hardness5, specificGravity6, cleavage7, crustalAbundance8, economicValue9));
 
             }
 
@@ -85,7 +85,23 @@ public class deck extends cards {
         }
         return ret;
     }
-    public cards drawCard(){
+    public cards drawCard(player player){
+        Collections.shuffle(deckArray);
+        if (deckArray.size()==0){
+            System.out.println("Out of cards");
+            return null;
+        }
+        else {
+            cards temp = (cards) deckArray.get(deckArray.size()-1);
+            deckArray.remove(deckArray.size()-1);
+            System.out.println("Card: " + temp + "* Was drawn * \n"
+                    + "=====================");
+            return temp;
+        }
+    }
+
+
+    public cards drawACard() {
         Collections.shuffle(deckArray);
         if (deckArray.size()==0){
             System.out.println("Out of cards");

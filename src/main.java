@@ -4,6 +4,7 @@ import java.util.Scanner;
  * Created by Kyle on 15/08/2016.
  */
 public class main {
+    static boolean gameOver;
     public static void main(String[] args) {
 
         main t = new main();
@@ -47,26 +48,32 @@ public class main {
 
         System.out.println("How Many Player? (3 to 5) ");
         Scanner input = new Scanner(System.in);
-        int amount = input.nextInt();
 
-        int numPlayers = getNumPlayers(amount);
+        int numPlayers = input.nextInt();
         game game = new game(numPlayers);
         //game.dealer();
         game.dealCards();
-
+        //game.showPlayers();
         //game.selectPlayer();
 //        player[] showsAPlayer = game.getPlayer();
 //        showPlayer(showsAPlayer);
-
         System.out.println("== Game is starting ==");
-        game.showCards();
+
+        //game.showPlayerCards(players);
+
+
         //====
-        System.out.println("* Place a card. *");
-        int cardNum = input.nextInt();
-        game.playGame(cardNum);
-        System.out.println(cardNum);
+
+        do {
+            //System.out.println("* Place a card. *");
+//            int cardNum = input.nextInt();
+//            System.out.println(cardNum + " was played");
+            game.playGame();
+            System.out.println("round done");
+        }while (!gameOver);
 
     }
+
 
     private int getPlayersCard(int amount) {
         return amount;

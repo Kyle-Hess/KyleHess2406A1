@@ -147,9 +147,9 @@ public class game {
         displayCurrentValue();
     }
     private void playersTurn() {
-        for (int i=0; i<players.length;i++){
+        for (int i=0;i<players.length;i++){
 
-            playPlayerTurns(players[0]);
+            playPlayerTurns(players[i]);
             playerTurn = numPlayers;
 
         }
@@ -171,6 +171,8 @@ public class game {
                 passPlayerTurn(player);
             }
         }
+        setCurrentValues();
+        displayCurrentValue();
     }
 
     private void passPlayerTurn(player player) {

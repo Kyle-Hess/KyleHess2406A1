@@ -4,7 +4,6 @@
     <list default="true" id="0e2600be-d80f-42fd-83eb-2b4bc059e00f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/KyleHess2406A1/main.class" afterPath="$PROJECT_DIR$/out/production/KyleHess2406A1/main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game.java" afterPath="$PROJECT_DIR$/src/game.java" />
     </list>
     <ignored path="KyleHessA1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -783,7 +782,7 @@
       <workItem from="1474956694370" duration="4365000" />
       <workItem from="1475036899158" duration="666000" />
       <workItem from="1475295006323" duration="1546000" />
-      <workItem from="1475377990271" duration="3384000" />
+      <workItem from="1475377990271" duration="3454000" />
     </task>
     <task id="LOCAL-00001" summary="attempting to import card info">
       <created>1472361543173</created>
@@ -862,11 +861,18 @@
       <option name="project" value="LOCAL" />
       <updated>1475302955539</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="-loops through players but the issue is player have same cards&#10;">
+      <created>1475382857420</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1475382857420</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80105000" />
+    <option name="totallyTimeSpent" value="80175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="152" y="200" width="1456" height="876" extended-state="0" />
@@ -952,7 +958,8 @@
     <MESSAGE value="-players cards assigned a number so the player can input number of card to place&#10;-started sorting out horrible plist stat conversions" />
     <MESSAGE value="&#10;-sorted out horrible plist stat conversions" />
     <MESSAGE value="-set a category at start of round&#10;-only one player can place cards at the moment&#10;-cards converted to strings&#10;-added playTurn functions&#10;-added  set and display category&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="-set a category at start of round&#10;-only one player can place cards at the moment&#10;-cards converted to strings&#10;-added playTurn functions&#10;-added  set and display category&#10;" />
+    <MESSAGE value="-loops through players but the issue is player have same cards&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="-loops through players but the issue is player have same cards&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

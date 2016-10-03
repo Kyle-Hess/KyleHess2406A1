@@ -14,8 +14,9 @@ import java.util.Collections;
 import java.util.Random;
 
 public class deck extends cards {
-    public ArrayList<cards> deckArray;
+    public ArrayList<cards> deckArray;//deck array stores cards
 
+// searches through plist card dictionary and creats an array to store them
     public deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {
         deckArray = new ArrayList<cards>();
         Collections.shuffle(deckArray);
@@ -27,7 +28,7 @@ public class deck extends cards {
             NSDictionary rootDict = (NSDictionary) PropertyListParser.parse(file);
             NSArray cardsArray = (NSArray) rootDict.objectForKey("cards");
 
-            while (cardCounter < 53) {
+            while (cardCounter < 53) {//looping through and adding mineral cards to array
                 cardCounter = cardCounter + 1;
 
                 NSDictionary card0 = (NSDictionary) cardsArray.objectAtIndex(cardCounter); // index of the cards
@@ -47,7 +48,7 @@ public class deck extends cards {
 
             }
 
-            while (trumpCounter < 59) {
+            while (trumpCounter < 59) {//looping through and adding trump cards to array
                 trumpCounter = trumpCounter + 1;
 
                 NSDictionary card1 = (NSDictionary) cardsArray.objectAtIndex(trumpCounter); // index of the cards
@@ -65,19 +66,19 @@ public class deck extends cards {
         }
     }
 
-    void print(){
-        for (cards i: deckArray) {
+    void print() {
+        for (cards i : deckArray) {
             System.out.println(i.toString());
         }
     }
 
-    public int size(){
+    public int size() {
         return deckArray.size();
-    }
+    }// returns the size of the deck
 
-    public ArrayList<cards> dealCards(int numCards) {
+    public ArrayList<cards> dealCards(int numCards) {//deals cards to players and removes the cards taken from deck
         ArrayList<cards> ret = new ArrayList<cards>();
-        for (int i = 0; i < numCards; i++){
+        for (int i = 0; i < numCards; i++) {
             int idx = new Random().nextInt(deckArray.size());
             cards card = deckArray.remove(idx);
             ret.add(card);
@@ -85,15 +86,15 @@ public class deck extends cards {
         }
         return ret;
     }
-    public cards drawCard(){
+
+    public cards drawCard() {// draw a card from the deck and returns it to the players cards/hand
         Collections.shuffle(deckArray);
-        if (deckArray.size()==0){
+        if (deckArray.size() == 0) {
             System.out.println("Out of cards");
             return null;
-        }
-        else {
-            cards temp = (cards) deckArray.get(deckArray.size()-1);
-            deckArray.remove(deckArray.size()-1);
+        } else {
+            cards temp = (cards) deckArray.get(deckArray.size() - 1);
+            deckArray.remove(deckArray.size() - 1);
             System.out.println("Card: " + temp + "* Was drawn * \n"
                     + "=====================");
             return temp;
@@ -101,18 +102,17 @@ public class deck extends cards {
     }
 
 
-    public cards drawACard() {
-        Collections.shuffle(deckArray);
-        if (deckArray.size()==0){
-            System.out.println("Out of cards");
-            return null;
-        }
-        else {
-            cards temp = (cards) deckArray.get(deckArray.size()-1);
-            deckArray.remove(deckArray.size()-1);
-            System.out.println("Card: " + temp + "* Was drawn * \n"
-                    + "=====================");
-            return temp;
-        }
-    }
+//    public cards drawACard() {
+//        Collections.shuffle(deckArray);
+//        if (deckArray.size() == 0) {
+//            System.out.println("Out of cards");
+//            return null;
+//        } else {
+//            cards temp = (cards) deckArray.get(deckArray.size() - 1);
+//            deckArray.remove(deckArray.size() - 1);
+//            System.out.println("Card: " + temp + "* Was drawn * \n"
+//                    + "=====================");
+//            return temp;
+//        }
+//    }
 }

@@ -2,13 +2,14 @@ import java.util.Scanner;
 
 /**
  * Created by Kyle on 15/08/2016.
+ *
+ * BUG: SOMETIMES AFTER ENTERING PLAYER AMOUNT AN EXCEPTION OCCURS* restart required
  */
 public class main {
     static boolean gameOver;
+
     public static void main(String[] args) {
-
         main t = new main();
-
     }
 
     public Scanner input = new Scanner(System.in);
@@ -19,9 +20,9 @@ public class main {
 
     public void run() {
         boolean running = true;
+        //when the game ends this asks the player if they want to play again
         while (running) {
             gameStart();
-
             System.out.println("game ends");
             System.out.println("play again? y/n");
             boolean validResponse = false;
@@ -46,48 +47,31 @@ public class main {
 
     public void gameStart() {
         int numPlayers;
-        do {System.out.println("How Many Player? (3 to 5) ");
+        //gets the number of players until the condition is met
+        System.out.println("Welcome to Mineral Supertrumps Card Game!");
+        do {
+            System.out.println("How Many Player? (3 to 5) ");
             Scanner input = new Scanner(System.in);
             numPlayers = input.nextInt();
-        }   while (numPlayers <2 || numPlayers >5);
+        } while (numPlayers < 3 || numPlayers > 5);
         System.out.println(numPlayers + " players in this game.");
-
-        game game = new game(numPlayers);
-        //game.dealer();
+        game game = new game(numPlayers); //creates a new game object
         game.dealCards();
-        //game.showPlayers();
-        //game.selectPlayer();
-//        player[] showsAPlayer = game.getPlayer();
-//        showPlayer(showsAPlayer);
-        System.out.println("== Game is starting ==");
+        game.dealer();
+        //game.showPlayers();//test method
 
-        //game.showPlayerCards(players);
+        System.out.println("== Game is starting ==\n");
+        System.out.println("Dealer:");
 
+        //game.showPlayerCards(players);//test method for showing player cards
+        //=======================
 
-        //====
-
-        do {
-            //System.out.println("* Place a card. *");
-//            int cardNum = input.nextInt();
-//            System.out.println(cardNum + " was played");
+        do {//
             game.playGame();
             System.out.println("round done");
-        }while (!gameOver);
-
+        } while (!gameOver);
     }
-
-
-    private int getPlayersCard(int amount) {
-        return amount;
-    }
-
-    private void showPlayer(player[] plays) {
-        System.out.println(plays +"\n");
-    }
-
-    private int getNumPlayers(int amount) {
-        int i = amount;
-        System.out.println("Players: "+i);
-        return i;
-    }
+    // TODO:multiple rounds
+    // TODO:integrate Trump cards (if trump card placed round is won and category set)
+    // TODO: first player with no cards wins
 }

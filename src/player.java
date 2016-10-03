@@ -6,7 +6,7 @@ import java.util.Scanner;
  */
 public class player {
     static ArrayList<cards> cards;
-    private String playerId;
+    public String playerId;
     private int n;
     public static boolean setCards;
 
@@ -20,31 +20,32 @@ public class player {
         return false;
     }
 
-    public static cards turn(int cardToPlay) {
-        cards topCard = player.cards.get(cardToPlay);
-        player.cards.remove(player.cards.get(cardToPlay -1));
+    public static cards turn(int cardToPlay) {//removes the card placed from the players deck
+        cards topCard = player.cards.get(cardToPlay - 1);
+        player.cards.remove(player.cards.get(cardToPlay - 1));
         System.out.println("Cards in hand " + player.cards.size());
         return topCard;
     }
+
     public void showPlayerCards(player players) {//Shows Players cards
-        System.out.println(playerId+ "'s turn. \n"+"Cards in hand " + players.cards.size());
-        for (int i = 0; i < players.cards.size(); i++ )
-            System.out.println("Card #" + (i+1) + ":\n" + players.cards.get(i));
+        System.out.println(playerId + "'s turn. \n" + "Cards in hand " + players.cards.size());
+        for (int i = 0; i < players.cards.size(); i++)
+            System.out.println("Card #" + (i + 1) + ":\n" + players.cards.get(i));
     }
 
     public void playersCards() {//shows players cards
-        System.out.println(playerId + "'s turn. " + "Cards: "+cards.size());
-        for (cards card :cards) {
-            System.out.println("card: "+n+"\n" +card.toString());
+        System.out.println(playerId + "'s turn. " + "Cards: " + cards.size());
+        for (cards card : cards) {
+            System.out.println("card: " + n + "\n" + card.toString());
             n++;
         }
     }
 
-    public String toString(){
-        return playerId +"\n"+"cards: " + cards + "\n" ;
+    public String toString() {
+        return playerId + "\n" + "cards: " + cards + "\n";
     }
 
-    public static int getCategoryToPlay() {
+    public static int getCategoryToPlay() {//get the category for the first round
         int categorySelect;
         System.out.println("Choose category to play:" + "\n1 Hardness" + "\n2 Specific gravity" + "\n3 Cleavage" + "\n4 Crustal abundance" + "\n5 Economic value");
         Scanner inputCategory = new Scanner(System.in);
@@ -52,7 +53,7 @@ public class player {
         return categorySelect;
     }
 
-    public static int playOrPass() {
+    public static int playOrPass() {//asks the user to play a card or pass their turn
         int playOrPass;
         Scanner input_playOrPass = new Scanner(System.in);
         do {
@@ -62,10 +63,10 @@ public class player {
         return playOrPass;
     }
 
-    public static int getCardToPlay() {
+    public static int getCardToPlay() {// gets the users card
         Scanner inputCardToPlay = new Scanner(System.in);
         System.out.println("Choose card to play");
-        int cardToPlay =  inputCardToPlay.nextInt();
+        int cardToPlay = inputCardToPlay.nextInt();
         return cardToPlay;
     }
 

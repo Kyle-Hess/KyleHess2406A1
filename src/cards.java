@@ -1,6 +1,7 @@
 /**
  * Created by Kyle on 28/08/2016.
  */
+
 import com.dd.plist.NSArray;
 import com.dd.plist.NSString;
 
@@ -15,7 +16,9 @@ class cards {
     String cleavage;
     String crystal_abundance;
     String economic_value;
-    public cards() {}
+
+    public cards() {
+    }
 
     public cards(NSString title, NSString chemistry1, NSString classification2, NSString crystalSystem3, NSArray occurrence4, NSString hardness5, NSString specificGravity6, NSString cleavage7, NSString crystalAbundance8, NSString economicValue9) {
         this.title = title.toString();
@@ -29,6 +32,8 @@ class cards {
         this.crystal_abundance = crystalAbundance8.toString();
         this.economic_value = economicValue9.toString();
     }
+
+// Mineral card objects
     public String getCategoryInPlay(int categorySelect) {
         String categoryInPlay = "";
         switch (categorySelect) {
@@ -47,7 +52,8 @@ class cards {
             case 5:
                 categoryInPlay = this.economic_value;
                 return categoryInPlay;
-        } return categoryInPlay;
+        }
+        return categoryInPlay;
     }
 
     @Override
@@ -56,15 +62,14 @@ class cards {
 
     }
 
-
-
+//trump card objects
     class TrumpCard extends cards {
 
         String title;
         String subtitle;
 
         TrumpCard(NSString title, NSString description) {
-            this.title= title.toString();
+            this.title = title.toString();
             this.subtitle = description.toString();
         }
 

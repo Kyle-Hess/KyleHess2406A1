@@ -85,7 +85,7 @@ public class deck extends cards {
         }
         return ret;
     }
-    public cards drawCard(player player){
+    public cards drawCard(){
         Collections.shuffle(deckArray);
         if (deckArray.size()==0){
             System.out.println("Out of cards");

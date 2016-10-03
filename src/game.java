@@ -148,8 +148,21 @@ public class game {
     }
     private void playersTurn() {
         for (int i=0;i<players.length;i++){
+            if (!player.setCards) {
+                players[i].playersCards();
+                int userMove = player.playOrPass();
+                if (userMove == 1) {
+                    int cardToPlay = player.getCardToPlay();
+                    int valueToPlay = getCategory(categoryNumber, player.cards.get(cardToPlay).getCategoryInPlay(categoryNumber));
+                    if (valueToPlay > valueInPlay) {
+                        topCard = player.turn(cardToPlay);
+                    } else { passPlayerTurn(); }
+                } else {
+                    passPlayerTurn();
+                }
+            }
 
-            playPlayerTurns(players[i]);
+            //playPlayerTurns(players[i]);
             playerTurn = numPlayers;
 
         }
@@ -165,18 +178,18 @@ public class game {
                 int cardToPlay = player.getCardToPlay();
                 int valueToPlay = getCategory(categoryNumber, player.cards.get(cardToPlay-1).getCategoryInPlay(categoryNumber));
                 if (valueToPlay > valueInPlay) {
-                    topCard = player.turn(player, cardToPlay);
-                } else { passPlayerTurn(player); }
+                    topCard = player.turn(cardToPlay);
+                } else { passPlayerTurn(); }
             } else {
-                passPlayerTurn(player);
+                passPlayerTurn();
             }
         }
         setCurrentValues();
         displayCurrentValue();
     }
 
-    private void passPlayerTurn(player player) {
-        deck.drawCard(player);
+    private void passPlayerTurn() {
+        deck.drawCard();
         player.setCards = true;
         playersRound = playersRound - 1;
         System.out.println(playersRound + " players left in round.");
@@ -218,7 +231,7 @@ public class game {
         categoryNumber = player.getCategoryToPlay();
         player.showPlayerCards(player);
         int cardToPlay = getCardNum();
-        topCard = player.turn(player, cardToPlay);
+        topCard = player.turn(cardToPlay);
 
     }
 

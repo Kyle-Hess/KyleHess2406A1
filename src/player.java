@@ -8,7 +8,7 @@ public class player {
     static ArrayList<cards> cards;
     private String playerId;
     private int n;
-    public boolean setCards;
+    public static boolean setCards;
 
 
     public player(String playerId) {
@@ -20,8 +20,8 @@ public class player {
         return false;
     }
 
-    public static cards turn(player player, int cardToPlay) {
-        cards topCard = player.cards.get(cardToPlay - 1);
+    public static cards turn(int cardToPlay) {
+        cards topCard = player.cards.get(cardToPlay);
         player.cards.remove(player.cards.get(cardToPlay -1));
         System.out.println("Cards in hand " + player.cards.size());
         return topCard;
@@ -52,7 +52,7 @@ public class player {
         return categorySelect;
     }
 
-    public int playOrPass() {
+    public static int playOrPass() {
         int playOrPass;
         Scanner input_playOrPass = new Scanner(System.in);
         do {
@@ -62,7 +62,7 @@ public class player {
         return playOrPass;
     }
 
-    public int getCardToPlay() {
+    public static int getCardToPlay() {
         Scanner inputCardToPlay = new Scanner(System.in);
         System.out.println("Choose card to play");
         int cardToPlay =  inputCardToPlay.nextInt();

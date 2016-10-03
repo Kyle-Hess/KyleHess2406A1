@@ -45,11 +45,13 @@ public class main {
     }
 
     public void gameStart() {
+        int numPlayers;
+        do {System.out.println("How Many Player? (3 to 5) ");
+            Scanner input = new Scanner(System.in);
+            numPlayers = input.nextInt();
+        }   while (numPlayers <2 || numPlayers >5);
+        System.out.println(numPlayers + " players in this game.");
 
-        System.out.println("How Many Player? (3 to 5) ");
-        Scanner input = new Scanner(System.in);
-
-        int numPlayers = input.nextInt();
         game game = new game(numPlayers);
         //game.dealer();
         game.dealCards();

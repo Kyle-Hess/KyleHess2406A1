@@ -49,14 +49,26 @@ public class main {
         int numPlayers;
         //gets the number of players until the condition is met
         System.out.println("Welcome to Mineral Supertrumps Card Game!");
+        game.buildDeck();
         do {
             System.out.println("How Many Player? (3 to 5) ");
             Scanner input = new Scanner(System.in);
             numPlayers = input.nextInt();
+
+            for (int i = 0; i < numPlayers; i++) {
+                player newPlayer = new player("player" + (i+1));
+                while (newPlayer.cards.size() < 8) {
+                    newPlayer.cards.add(game.deck.deckArray.remove(0));
+                }
+                game.players.add(newPlayer);
+            }
+
         } while (numPlayers < 3 || numPlayers > 5);
         System.out.println(numPlayers + " players in this game.");
+
         game game = new game(numPlayers); //creates a new game object
-        game.dealCards();
+
+        //game.dealCards();
         game.dealer();
         //game.showPlayers();//test method
 

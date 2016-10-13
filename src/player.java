@@ -5,27 +5,37 @@ import java.util.Scanner;
  * Created by Kyle on 16/09/2016.
  */
 public class player {
-    static ArrayList<cards> cards;
+    ArrayList<cards> cards;
     public String playerId;
     private int n;
-    public static boolean setCards;
+    boolean setInOut;
 
 
     public player(String playerId) {
         this.playerId = playerId;
+        this.cards = new ArrayList<>();
+        this.setInOut = true;
     }
 
-    public boolean setCards(ArrayList<cards> cards) {
-        this.cards = cards;
-        return false;
+//    public setCards(ArrayList<cards> cards) {
+//        this.cards = cards;
+//        //return false;
+//    }
+
+    public String getPlayer() {
+        String hand = "";
+
+        for (cards i : cards) {
+            hand += i + " ";}
+        return ("Player name: " + this.playerId+"\n " + hand);
     }
 
-    public static cards turn(int cardToPlay) {//removes the card placed from the players deck
-        cards topCard = player.cards.get(cardToPlay - 1);
-        player.cards.remove(player.cards.get(cardToPlay - 1));
-        System.out.println("Cards in hand " + player.cards.size());
-        return topCard;
-    }
+//    public static cards turn(int cardToPlay) {//removes the card placed from the players deck
+//        cards topCard = player.cards.get(cardToPlay - 1);
+//        player.cards.remove(player.cards.get(cardToPlay - 1));
+//        System.out.println("Cards in hand " + player.cards.size());
+//        return topCard;
+//    }
 
     public void showPlayerCards(player players) {//Shows Players cards
         System.out.println(playerId + "'s turn. \n" + "Cards in hand " + players.cards.size());
@@ -42,7 +52,7 @@ public class player {
     }
 
     public String toString() {
-        return playerId + "\n" + "cards: " + cards + "\n";
+        return this.playerId + "\n" + "cards: " + this.cards + "\n";
     }
 
     public static int getCategoryToPlay() {//get the category for the first round

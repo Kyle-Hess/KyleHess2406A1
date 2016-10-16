@@ -54,21 +54,10 @@ public class main {
             System.out.println("How Many Player? (3 to 5) ");
             Scanner input = new Scanner(System.in);
             numPlayers = input.nextInt();
-
-            for (int i = 0; i < numPlayers; i++) {
-                player newPlayer = new player("player" + (i+1));
-                while (newPlayer.cards.size() < 8) {
-                    newPlayer.cards.add(game.deck.deckArray.remove(0));
-                }
-                game.players.add(newPlayer);
-            }
-
         } while (numPlayers < 3 || numPlayers > 5);
         System.out.println(numPlayers + " players in this game.");
-
         game game = new game(numPlayers); //creates a new game object
-
-        //game.dealCards();
+        game.dealCards();
         game.dealer();
         //game.showPlayers();//test method
 
@@ -83,6 +72,24 @@ public class main {
             System.out.println("round done");
         } while (!gameOver);
     }
+
+    public static int playOrPass() {//asks the user to play a card or pass their turn
+        int playOrPass;
+        Scanner input_playOrPass = new Scanner(System.in);
+        do {
+            System.out.println("1: Play a card\n2: Pass turn");
+            playOrPass = input_playOrPass.nextInt();
+        } while (playOrPass != 1 && playOrPass != 2);
+        return playOrPass;
+    }
+
+    public static int getCardToPlay() {// gets the users card
+        Scanner inputCardToPlay = new Scanner(System.in);
+        System.out.println("Choose card to play");
+        int cardToPlay = inputCardToPlay.nextInt();
+        return cardToPlay;
+    }
+
     // TODO:multiple rounds
     // TODO:integrate Trump cards (if trump card placed round is won and category set)
     // TODO: first player with no cards wins

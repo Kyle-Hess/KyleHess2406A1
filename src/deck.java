@@ -16,7 +16,7 @@ import java.util.Random;
 public class deck extends cards {
     public ArrayList<cards> deckArray;//deck array stores cards
 
-// searches through plist card dictionary and creats an array to store them
+    // searches through plist card dictionary and creats an array to store them
     public deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {
         deckArray = new ArrayList<cards>();
         Collections.shuffle(deckArray);

@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Gui extends JFrame implements ActionListener {
 
     BorderLayout b = new BorderLayout();
-    GridLayout flow = new GridLayout(2,3,3,4);
+    GridLayout grid = new GridLayout(2,3,3,4);
     GridBagConstraints c =new GridBagConstraints();
 
     JLabel msg1 = new  JLabel("top label");
@@ -21,12 +21,11 @@ public class Gui extends JFrame implements ActionListener {
     JLabel msg2 = new JLabel("bottom label");
 
     public Gui(){
-        super("Gui");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        super("Game PLay");
 
         //setLayout(b);
-        add(msg1);
-        setLayout(flow);
+        setLayout(grid);
+        add(msg1, BorderLayout.NORTH);
         add(button);
         add(button2);
         add(button3);
@@ -34,7 +33,7 @@ public class Gui extends JFrame implements ActionListener {
         add(msg2);
         button.addActionListener(this);
 
-
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     @Override

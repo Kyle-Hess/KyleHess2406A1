@@ -10,28 +10,32 @@ public class Gui extends JFrame implements ActionListener {
 
     BorderLayout b = new BorderLayout();
     GridLayout grid = new GridLayout(2,3,3,4);
-    GridBagConstraints c =new GridBagConstraints();
+    GridBagLayout gb =new GridBagLayout();
 
-    JLabel msg1 = new  JLabel("top label");
-    JButton button = new JButton("card 1");
-    JButton button2 = new JButton("card 2");
-    JButton button3 = new JButton("card 3");
-    JButton button4 = new JButton("card 4");
-
-    JLabel msg2 = new JLabel("bottom label");
+//    JFrame frame = new JFrame("Mineral Super trumps");
+//    JPanel panel = new JPanel();
+    private JLabel msg1 = new  JLabel("top label");
+    private JButton button = new JButton("card 1");
+    private JButton button2 = new JButton("card 2");
+    private JButton button3 = new JButton("card 3");
+    private JButton button4 = new JButton("card 4");
+    private JLabel msg2 = new JLabel("bottom label");
 
     public Gui(){
-        super("Game PLay");
+        super("Game Play");
 
-        //setLayout(b);
+        //panel.setLayout(new GridLayout(3,4,3,3));
         setLayout(grid);
-        add(msg1, BorderLayout.NORTH);
+
+        add(msg1);
         add(button);
         add(button2);
         add(button3);
         add(button4);
         add(msg2);
-        button.addActionListener(this);
+        //button.addActionListener(this);
+        //frame.add(panel);
+
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
@@ -44,9 +48,18 @@ public class Gui extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        int numPlayers;
+        String welcome = ("Welcome to Mineral Super trumps Card Game!");
+        do {
+            numPlayers = Integer.parseInt( JOptionPane.showInputDialog(null, welcome, "How Many Player? (3 to 5)"));
+        } while (numPlayers < 3 || numPlayers > 5);
+
+
         Gui aFrame = new Gui();
-        aFrame.setSize(600, 600);
+
+        //aFrame.setSize(600, 600);
+        aFrame.pack();
         aFrame.setVisible(true);
-        //aFrame.pack();
+
     }
 }

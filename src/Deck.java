@@ -11,27 +11,25 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
-public class deck extends cards {
-    public ArrayList<cards> deckArray;//deck array stores cards
+public class Deck extends Cards {
+    public ArrayList<Cards> deckArray;//Deck array stores cards
 
     // searches through plist card dictionary and creats an array to store them
-    public deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {
-        deckArray = new ArrayList<cards>();
-        Collections.shuffle(deckArray);
+    public Deck() throws ParserConfigurationException, ParseException, SAXException, PropertyListFormatException, IOException {
+        deckArray = new ArrayList<Cards>();
         try {
             Integer cardCounter = -1;
             Integer trumpCounter = 53;
 
             File file = new File("MstCards_151021.plist");
             NSDictionary rootDict = (NSDictionary) PropertyListParser.parse(file);
-            NSArray cardsArray = (NSArray) rootDict.objectForKey("cards");
+            NSArray cardsArray = (NSArray) rootDict.objectForKey("Cards");
 
             while (cardCounter < 53) {//looping through and adding mineral cards to array
                 cardCounter = cardCounter + 1;
 
-                NSDictionary card0 = (NSDictionary) cardsArray.objectAtIndex(cardCounter); // index of the cards
+                NSDictionary card0 = (NSDictionary)cardsArray.objectAtIndex(cardCounter); // index of the cards
 
                 NSString title1 = (NSString) card0.objectForKey("title");
                 NSString chemistry1 = (NSString) card0.objectForKey("chemistry");
@@ -44,7 +42,7 @@ public class deck extends cards {
                 NSString crustalAbundance8 = (NSString) card0.objectForKey("crustal_abundance");
                 NSString economicValue9 = (NSString) card0.objectForKey("economic_value");
 
-                deckArray.add(new cards(title1, chemistry1, classification2, crystalSystem3, occurrence4, hardness5, specificGravity6, cleavage7, crustalAbundance8, economicValue9));
+                deckArray.add(new Cards(title1, chemistry1, classification2, crystalSystem3, occurrence4, hardness5, specificGravity6, cleavage7, crustalAbundance8, economicValue9));
 
             }
 
@@ -66,40 +64,39 @@ public class deck extends cards {
         }
     }
 
-    void print() {
-        for (cards i : deckArray) {
+    public void print() {
+        for (Cards i : deckArray) {
             System.out.println(i.toString());
         }
     }
 
     public int size() {
         return deckArray.size();
-    }// returns the size of the deck
+    }// returns the size of the Deck
 
-    public ArrayList<cards> dealCards(int numCards) {//deals cards to players and removes the cards taken from deck
-        ArrayList<cards> ret = new ArrayList<cards>();
+    public ArrayList<Cards> dealCards(int numCards) {//deals cards to players and removes the cards taken from Deck
+        ArrayList<Cards> ret = new ArrayList<Cards>();
         for (int i = 0; i < numCards; i++) {
-            int idx = new Random().nextInt(deckArray.size());
-            cards card = deckArray.remove(idx);
-            ret.add(card);
+            ret.add(deckArray.remove(0));
             //System.out.println("card " +card);
         }
         return ret;
     }
 
-    public cards drawCard() {// draw a card from the deck and returns it to the players cards/hand
+    public Cards drawCard() {// draw a card from the Deck and returns it to the players cards/hand
         Collections.shuffle(deckArray);
         if (deckArray.size() == 0) {
             System.out.println("Out of cards");
             return null;
         } else {
-            cards temp = (cards) deckArray.get(deckArray.size() - 1);
+            Cards temp = (Cards) deckArray.get(deckArray.size() - 1);
             deckArray.remove(deckArray.size() - 1);
             System.out.println("Card: " + temp + "* Was drawn * \n"
                     + "=====================");
             return temp;
         }
     }
+
 
 
 //    public cards drawACard() {

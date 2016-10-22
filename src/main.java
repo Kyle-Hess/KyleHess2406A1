@@ -20,10 +20,10 @@ public class main {
 
     public void run() {
         boolean running = true;
-        //when the game ends this asks the player if they want to play again
+        //when the Game ends this asks the Player if they want to play again
         while (running) {
             gameStart();
-            System.out.println("game ends");
+            System.out.println("Game ends");
             System.out.println("play again? y/n");
             boolean validResponse = false;
             while (!validResponse) {
@@ -49,26 +49,26 @@ public class main {
         int numPlayers;
         //gets the number of players until the condition is met
         System.out.println("Welcome to Mineral Supertrumps Card Game!");
-        game.buildDeck();
+        Game.buildDeck();
         do {
             System.out.println("How Many Player? (3 to 5) ");
             Scanner input = new Scanner(System.in);
             numPlayers = input.nextInt();
         } while (numPlayers < 3 || numPlayers > 5);
-        System.out.println(numPlayers + " players in this game.");
-        game game = new game(numPlayers); //creates a new game object
-        game.dealCards();
-        game.dealer();
-        //game.showPlayers();//test method
+        System.out.println(numPlayers + " players in this Game.");
+        Game Game = new Game(numPlayers); //creates a new Game object
+        Game.dealCards();
+        Game.dealer();
+        //Game.showPlayers();//test method
 
         System.out.println("== Game is starting ==\n");
         System.out.println("Dealer:");
 
-        //game.showPlayerCards(players);//test method for showing player cards
+        //Game.showPlayerCards(players);//test method for showing Player cards
         //=======================
 
         do {//
-            game.playGame();
+            Game.playGame();
             System.out.println("round done");
         } while (!gameOver);
     }
@@ -92,5 +92,5 @@ public class main {
 
     // TODO:multiple rounds
     // TODO:integrate Trump cards (if trump card placed round is won and category set)
-    // TODO: first player with no cards wins
+    // TODO: first Player with no cards wins
 }

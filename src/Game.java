@@ -12,13 +12,13 @@ import java.util.Scanner;
 /**
  * Created by Kyle on 16/09/2016.
  */
-public class game {
+public class Game {
     private static final int NUM_CARDS = 8;
     private int numPlayers;
     private int dealerId;
-    private player[] players;
-    private static deck deck;
-    cards topCard = null;
+    private Player[] players;
+    private static Deck deck;
+    Cards topCard = null;
     private int playersinRound;
     private int valueInPlay;
     private String categoryValueAsString;
@@ -28,26 +28,26 @@ public class game {
     private String categoryAsString;
     private int roundCounter;
 
-    public game(int numPlayers) {
+    public Game(int numPlayers) {
         this.numPlayers = numPlayers;
     }
 
-    public void dealer() {// selects a random player to be dealer
+    public void dealer() {// selects a random Player to be dealer
         Random random = new Random();
         dealerId = random.nextInt(numPlayers) + 1;
-        System.out.println("Player "+ (dealerId+1) +" is dealer\n");
+        System.out.println("Player " + (dealerId + 1) + " is dealer\n");
     }
 
-    //creates player and deals them 8 cards each
+    //creates Player and deals them 8 cards each
     public void dealCards() {
-        players = new player[numPlayers];
+        players = new Player[numPlayers];
         for (int i = 0; i < numPlayers; i++) {
-            players[i] = new player("Player " + (i + 1));
+            players[i] = new Player("Player " + (i + 1));
         }
 
-        for (player player : players) {
-            ArrayList<cards> card = deck.dealCards(NUM_CARDS);
-            player.setCards(card);
+        for (Player Player : players) {
+            ArrayList<Cards> card = deck.dealCards(NUM_CARDS);
+            Player.setCards(card);
 
         }
     }
@@ -64,12 +64,12 @@ public class game {
         boolean inGame = false;
         playersinRound = numPlayers;
         roundCounter = roundCounter + 1;
-        //startRound();
-        startRoundPlayer(players[dealerId]);
+        //startRoundPlayer(players[dealerId]);
+        startRound();//dealer chooses the category
         do {
             playersTurn();
         }
-        while (playersinRound >1);
+        while (playersinRound > 1);
         categoryValueAsString = null;
         valueInPlay = 0;
         main.gameOver = false;
@@ -77,11 +77,11 @@ public class game {
     }
 //================================
 
-    private void startRoundPlayer(player player) {//test* - first player chooses card to play  and sets the category
+    private void startRoundPlayer(Player Player) {//test* - first Player chooses card to play  and sets the category
         categoryNumber = getCategoryToPlay();
-        player.showPlayerCards(player);
+        Player.showPlayerCards(Player);
         int cardToPlay = main.getCardToPlay();
-        topCard = player.turn(cardToPlay);
+        topCard = Player.turn(cardToPlay);
 
         categoryAsString = getCategoryAsString(categoryNumber);
         setCurrentValues();
@@ -91,30 +91,26 @@ public class game {
     //gets the category to play.
 //currently get a card from the deck and uses its category stats
     private void startRound() {
-        playerTurn = numPlayers;
-
-
         categoryNumber = getCategoryToPlay();
-        topCard = deck.drawCard();
-        //startRoundPlayer(this.players[0]);
-        //playerTurn = numPlayers;
 
         categoryAsString = getCategoryAsString(categoryNumber);
-        setCurrentValues();
+        setStartValues();
+        //setCurrentValues();
         displayCurrentValue();
     }
-    //loops through each player to place a card    //currently only uses first players cards
+
+    //loops through each Player to place a card    //currently only uses first players cards
     private void playersTurn() {
         for (int i = 0; i < players.length; i++) {
-            //if (!player.pass) {
+            //if (!Player.pass) {
             players[i].showPlayerCards(players[i]);
             //players[i].getPlayer();
             int userMove = main.playOrPass();
             if (userMove == 1) {
                 int cardToPlay = main.getCardToPlay();
-                int valueToPlay = getCategory(categoryNumber, player.cards.get(cardToPlay-1).getCategoryInPlay(categoryNumber));
+                int valueToPlay = getCategory(categoryNumber, players[i].cards.get(cardToPlay - 1).getCategoryInPlay(categoryNumber));
                 if (valueToPlay > valueInPlay) {
-                    topCard = player.turn(cardToPlay);
+                    topCard = Player.turn(cardToPlay);
                 } else {
                     passPlayerTurn();
                 }
@@ -129,42 +125,26 @@ public class game {
         }
     }
 
-//    private void playPlayerTurns(player player) {//test function
-//        if (!player.setCards) {
-//            player.showPlayerCards(player);
-//            int userMove = player.playOrPass();
-//            if (userMove == 1) {
-//                int cardToPlay = player.getCardToPlay();
-//                int valueToPlay = getCategory(categoryNumber, player.cards.get(cardToPlay - 1).getCategoryInPlay(categoryNumber));
-//                if (valueToPlay > valueInPlay) {
-//                    topCard = player.turn(cardToPlay);
-//                } else {
-//                    passPlayerTurn();
-//                }
-//            } else {
-//                passPlayerTurn();
-//            }
-//        }
-//        setCurrentValues();
-//        displayCurrentValue();
-//    }
-
-    private void passPlayerTurn() {//handles player passes.
+    private void passPlayerTurn() {//handles Player passes.
         deck.drawCard();
-        player.setCards = true;
+        Player.setCards = true;
         playersinRound = playersinRound - 1;
         System.out.println(playersinRound + " players left in round.");
     }
 
-
-    private void displayCurrentValue() {//displays the current category
-        System.out.println("Category for this round is: " + categoryAsString.toUpperCase());
-        System.out.println("Score to beat is: " + categoryValueAsString.toUpperCase() + "\n");
+    private void setStartValues() {//sets the starting score to 0
+        categoryValueAsString = "0";
+        valueInPlay = 0;
     }
 
     private void setCurrentValues() {//gets the current category that has been played
         categoryValueAsString = topCard.getCategoryInPlay(categoryNumber);
         valueInPlay = getCategory(categoryNumber, topCard.getCategoryInPlay(categoryNumber));
+    }
+
+    private void displayCurrentValue() {//displays the current category
+        System.out.println("Category for this round is: " + categoryAsString.toUpperCase());
+        System.out.println("Score to beat is: " + categoryValueAsString.toUpperCase() + "\n");
     }
 
     public static int getCategoryToPlay() {//get the category for the first round
@@ -174,8 +154,6 @@ public class game {
         categorySelect = inputCategory.nextInt();
         return categorySelect;
     }
-
-
 
     private String getCategoryAsString(int categoryNumber) {//
         String categoryAsString;
@@ -233,109 +211,109 @@ public class game {
         int hardnessValue = 0;
         switch (hardness) {
             case "1":
-                hardnessValue =1;
+                hardnessValue = 1;
                 return hardnessValue;
             case "1-1.5":
-                hardnessValue =2;
+                hardnessValue = 2;
                 return hardnessValue;
             case "1-2":
-                hardnessValue =3;
+                hardnessValue = 3;
                 return hardnessValue;
             case "1.5-2.5":
-                hardnessValue =4;
+                hardnessValue = 4;
                 return hardnessValue;
             case "2":
-                hardnessValue =4;
+                hardnessValue = 4;
                 return hardnessValue;
             case "2-3":
-                hardnessValue =5;
+                hardnessValue = 5;
                 return hardnessValue;
             case "2.5":
-                hardnessValue =5;
+                hardnessValue = 5;
                 return hardnessValue;
             case "2.5-3":
-                hardnessValue =6;
+                hardnessValue = 6;
                 return hardnessValue;
             case "2.5-3.5":
-                hardnessValue =7;
+                hardnessValue = 7;
                 return hardnessValue;
             case "3":
-                hardnessValue =7;
+                hardnessValue = 7;
                 return hardnessValue;
             case "3-3.5":
-                hardnessValue =8;
+                hardnessValue = 8;
                 return hardnessValue;
             case "3.5-4":
-                hardnessValue =9;
+                hardnessValue = 9;
                 return hardnessValue;
             case "3.5-4.5":
-                hardnessValue =10;
+                hardnessValue = 10;
                 return hardnessValue;
             case "4":
-                hardnessValue =10;
+                hardnessValue = 10;
                 return hardnessValue;
             case "4-4.5":
-                hardnessValue =11;
+                hardnessValue = 11;
                 return hardnessValue;
             case "5":
-                hardnessValue =12;
+                hardnessValue = 12;
                 return hardnessValue;
             case "5-5.5":
-                hardnessValue =13;
+                hardnessValue = 13;
                 return hardnessValue;
             case "5-6":
-                hardnessValue =14;
+                hardnessValue = 14;
                 return hardnessValue;
             case "5.5":
-                hardnessValue =14;
+                hardnessValue = 14;
                 return hardnessValue;
             case "5.5-6":
-                hardnessValue =15;
+                hardnessValue = 15;
                 return hardnessValue;
             case "6":
-                hardnessValue =16;
+                hardnessValue = 16;
                 return hardnessValue;
             case "5.5-6.5":
-                hardnessValue =16;
+                hardnessValue = 16;
                 return hardnessValue;
             case "6-6.5":
-                hardnessValue =17;
+                hardnessValue = 17;
                 return hardnessValue;
             case "5.5-7":
-                hardnessValue =17;
+                hardnessValue = 17;
                 return hardnessValue;
             case "6-7":
-                hardnessValue =18;
+                hardnessValue = 18;
                 return hardnessValue;
             case "6.5-7":
-                hardnessValue =19;
+                hardnessValue = 19;
                 return hardnessValue;
             case "6-7.5":
-                hardnessValue =20;
+                hardnessValue = 20;
                 return hardnessValue;
             case "6.5-7.5":
-                hardnessValue =21;
+                hardnessValue = 21;
                 return hardnessValue;
             case "7":
-                hardnessValue =21;
+                hardnessValue = 21;
                 return hardnessValue;
             case "7-7.5":
-                hardnessValue =22;
+                hardnessValue = 22;
                 return hardnessValue;
             case "7.5":
-                hardnessValue =23;
+                hardnessValue = 23;
                 return hardnessValue;
             case "7.5-8":
-                hardnessValue =24;
+                hardnessValue = 24;
                 return hardnessValue;
             case "8":
-                hardnessValue =25;
+                hardnessValue = 25;
                 return hardnessValue;
             case "9":
-                hardnessValue =26;
+                hardnessValue = 26;
                 return hardnessValue;
             case "10":
-                hardnessValue =27;
+                hardnessValue = 27;
                 return hardnessValue;
         }
         return hardnessValue;
@@ -346,151 +324,151 @@ public class game {
         int sgValue = 0;
         switch (specific_gravity) {
             case "1":
-                sgValue =1;
+                sgValue = 1;
                 return sgValue;
             case "2.2":
-                sgValue =2;
+                sgValue = 2;
                 return sgValue;
             case "2.3":
-                sgValue =3;
+                sgValue = 3;
                 return sgValue;
             case "2.4":
-                sgValue =4;
+                sgValue = 4;
                 return sgValue;
             case "2.5-2.6":
-                sgValue =5;
+                sgValue = 5;
                 return sgValue;
             case "2.6":
-                sgValue =6;
+                sgValue = 6;
                 return sgValue;
             case "2.6-2.7":
-                sgValue =7;
+                sgValue = 7;
                 return sgValue;
             case "2.65":
-                sgValue =7;
+                sgValue = 7;
                 return sgValue;
             case "2.6-2.8":
-                sgValue =8;
+                sgValue = 8;
                 return sgValue;
             case "2.7":
-                sgValue =8;
+                sgValue = 8;
                 return sgValue;
             case "2.6-2.9":
-                sgValue =9;
+                sgValue = 9;
                 return sgValue;
             case "2.8-2.9":
-                sgValue =10;
+                sgValue = 10;
                 return sgValue;
             case "2.9":
-                sgValue =11;
+                sgValue = 11;
                 return sgValue;
             case "2.6-3.3":
-                sgValue =12;
+                sgValue = 12;
                 return sgValue;
             case "3.0":
-                sgValue =13;
+                sgValue = 13;
                 return sgValue;
             case "2.7-3.3":
-                sgValue =13;
+                sgValue = 13;
                 return sgValue;
             case "3.0-3.2":
-                sgValue =14;
+                sgValue = 14;
                 return sgValue;
             case "3.1-3,2":
-                sgValue =15;
+                sgValue = 15;
                 return sgValue;
             case "3.15":
-                sgValue =15;
+                sgValue = 15;
                 return sgValue;
             case "3.2":
-                sgValue =16;
+                sgValue = 16;
                 return sgValue;
             case "3.0-3.5":
-                sgValue =17;
+                sgValue = 17;
                 return sgValue;
             case "3.25":
-                sgValue =17;
+                sgValue = 17;
                 return sgValue;
             case "3.2-3.5":
-                sgValue =18;
+                sgValue = 18;
                 return sgValue;
             case "3.2-3.6":
-                sgValue =19;
+                sgValue = 19;
                 return sgValue;
             case "3.4-3.6":
-                sgValue =20;
+                sgValue = 20;
                 return sgValue;
             case "3.5":
-                sgValue =20;
+                sgValue = 20;
                 return sgValue;
             case "3.2-3.9":
-                sgValue =21;
+                sgValue = 21;
                 return sgValue;
             case "3.5-3.6":
-                sgValue =21;
+                sgValue = 21;
                 return sgValue;
             case "3.5-3.7":
-                sgValue =22;
+                sgValue = 22;
                 return sgValue;
             case "3.7-3.8":
-                sgValue =23;
+                sgValue = 23;
                 return sgValue;
             case "3.2-4.4":
-                sgValue =24;
+                sgValue = 24;
                 return sgValue;
             case "3.5-4.3":
-                sgValue =25;
+                sgValue = 25;
                 return sgValue;
             case "4.0":
-                sgValue =26;
+                sgValue = 26;
                 return sgValue;
             case "3.9-4.1":
-                sgValue =26;
+                sgValue = 26;
                 return sgValue;
             case "4.1-4.3":
-                sgValue =27;
+                sgValue = 27;
                 return sgValue;
             case "4.3":
-                sgValue =28;
+                sgValue = 28;
                 return sgValue;
             case "4.5":
-                sgValue =29;
+                sgValue = 29;
                 return sgValue;
             case "4.6":
-                sgValue =30;
+                sgValue = 30;
                 return sgValue;
             case "4.6-4.7":
-                sgValue =31;
+                sgValue = 31;
                 return sgValue;
             case "4.7":
-                sgValue =32;
+                sgValue = 32;
                 return sgValue;
             case "4.5-5.1":
-                sgValue =33;
+                sgValue = 33;
                 return sgValue;
             case "4.7-4.8":
-                sgValue =33;
+                sgValue = 33;
                 return sgValue;
             case "5.0":
-                sgValue =34;
+                sgValue = 34;
                 return sgValue;
             case "5.0-5.3":
-                sgValue =35;
+                sgValue = 35;
                 return sgValue;
             case "5.2":
-                sgValue =36;
+                sgValue = 36;
                 return sgValue;
             case "5.3":
-                sgValue =37;
+                sgValue = 37;
                 return sgValue;
             case "6.9-7.1":
-                sgValue =38;
+                sgValue = 38;
                 return sgValue;
             case "7.5-7.6":
-                sgValue =39;
+                sgValue = 39;
                 return sgValue;
             case "19.3":
-                sgValue =40;
+                sgValue = 40;
                 return sgValue;
         }
         return sgValue;
@@ -501,49 +479,49 @@ public class game {
         int cleavageValue = 0;
         switch (cleavage) {
             case "none":
-                cleavageValue =1;
+                cleavageValue = 1;
                 return cleavageValue;
             case "poor/none":
-                cleavageValue =2;
+                cleavageValue = 2;
                 return cleavageValue;
             case "1 poor":
-                cleavageValue =3;
+                cleavageValue = 3;
                 return cleavageValue;
             case "2 poor":
-                cleavageValue =4;
+                cleavageValue = 4;
                 return cleavageValue;
             case "1 good, 1 poor":
-                cleavageValue =5;
+                cleavageValue = 5;
                 return cleavageValue;
             case "1 good":
-                cleavageValue =6;
+                cleavageValue = 6;
                 return cleavageValue;
             case "2 good":
-                cleavageValue =7;
+                cleavageValue = 7;
                 return cleavageValue;
             case "3 good":
-                cleavageValue =8;
+                cleavageValue = 8;
                 return cleavageValue;
             case "1 perfect":
-                cleavageValue =9;
+                cleavageValue = 9;
                 return cleavageValue;
             case "3 perfect":
-                cleavageValue =10;
+                cleavageValue = 10;
                 return cleavageValue;
             case "4 perfect":
-                cleavageValue =11;
+                cleavageValue = 11;
                 return cleavageValue;
             case "6 perfect":
-                cleavageValue =12;
+                cleavageValue = 12;
                 return cleavageValue;
             case "1 perfect, 1 good":
-                cleavageValue =13;
+                cleavageValue = 13;
                 return cleavageValue;
             case "1 perfect, 2 good":
-                cleavageValue =14;
+                cleavageValue = 14;
                 return cleavageValue;
             case "2 perfect, 1 good":
-                cleavageValue =15;
+                cleavageValue = 15;
                 return cleavageValue;
         }
         return cleavageValue;
@@ -603,7 +581,7 @@ public class game {
 
     public static void buildDeck() {
         try {
-            deck = new deck();
+            deck = new Deck();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -616,6 +594,6 @@ public class game {
             e.printStackTrace();
         }
         Collections.shuffle(deck.deckArray);
-        System.out.println("\nDeck has been shuffled. \n" + deck.size() + " cards in deck.\n");
+        System.out.println("\ndeck has been shuffled. \n" + deck.size() + " cards in deck.\n");
     }
 }

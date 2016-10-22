@@ -5,7 +5,7 @@
 import com.dd.plist.NSArray;
 import com.dd.plist.NSString;
 
-class cards {
+class Cards {
     String title;
     String chemistry;
     String classification;
@@ -17,10 +17,10 @@ class cards {
     String crystal_abundance;
     String economic_value;
 
-    public cards() {
+    public Cards() {
     }
 
-    public cards(NSString title, NSString chemistry1, NSString classification2, NSString crystalSystem3, NSArray occurrence4, NSString hardness5, NSString specificGravity6, NSString cleavage7, NSString crystalAbundance8, NSString economicValue9) {
+    public Cards(NSString title, NSString chemistry1, NSString classification2, NSString crystalSystem3, NSArray occurrence4, NSString hardness5, NSString specificGravity6, NSString cleavage7, NSString crystalAbundance8, NSString economicValue9) {
         this.title = title.toString();
         this.chemistry = chemistry1.toString();
         this.classification = classification2.toString();
@@ -63,7 +63,7 @@ class cards {
     }
 
 //trump card objects
-    class TrumpCard extends cards {
+    class TrumpCard extends Cards {
 
         String title;
         String subtitle;

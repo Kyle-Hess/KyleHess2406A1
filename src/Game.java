@@ -20,12 +20,12 @@ public class Game {
     private static Deck deck;
     Cards topCard = null;
     private int playersinRound;
-    private int valueInPlay;
-    private String categoryValueAsString;
+    private static int valueInPlay;
+    private static String categoryValueAsString;
     private int playerTurn;
     private int cardNum;
-    private int categoryNumber = 0;
-    private String categoryAsString;
+    private static int categoryNumber = 0;
+    private static String categoryAsString;
     private int roundCounter;
 
     public Game(int numPlayers) {
@@ -90,7 +90,7 @@ public class Game {
 
     //gets the category to play.
 //currently get a card from the deck and uses its category stats
-    private void startRound() {
+    public static void startRound() {
         categoryNumber = getCategoryToPlay();
 
         categoryAsString = getCategoryAsString(categoryNumber);
@@ -112,10 +112,10 @@ public class Game {
                 if (valueToPlay > valueInPlay) {
                     topCard = Player.turn(cardToPlay);
                 } else {
-                    passPlayerTurn();
+                    passPlayerTurn(players[i]);
                 }
             } else {
-                passPlayerTurn();
+                passPlayerTurn(players[i]);
             }
             //}
             setCurrentValues();
@@ -125,14 +125,17 @@ public class Game {
         }
     }
 
-    private void passPlayerTurn() {//handles Player passes.
-        deck.drawCard();
+    private void passPlayerTurn(Player player) {//handles Player passes.
+        //deck.drawCard();
+        //Player.drawCard(player, deck );
+        Player.drawACard(player,deck);
+
         Player.setCards = true;
         playersinRound = playersinRound - 1;
         System.out.println(playersinRound + " players left in round.");
     }
 
-    private void setStartValues() {//sets the starting score to 0
+    private static void setStartValues() {//sets the starting score to 0
         categoryValueAsString = "0";
         valueInPlay = 0;
     }
@@ -142,7 +145,7 @@ public class Game {
         valueInPlay = getCategory(categoryNumber, topCard.getCategoryInPlay(categoryNumber));
     }
 
-    private void displayCurrentValue() {//displays the current category
+    private static void displayCurrentValue() {//displays the current category
         System.out.println("Category for this round is: " + categoryAsString.toUpperCase());
         System.out.println("Score to beat is: " + categoryValueAsString.toUpperCase() + "\n");
     }
@@ -155,7 +158,7 @@ public class Game {
         return categorySelect;
     }
 
-    private String getCategoryAsString(int categoryNumber) {//
+    private static String getCategoryAsString(int categoryNumber) {//
         String categoryAsString;
         loop:
         do {

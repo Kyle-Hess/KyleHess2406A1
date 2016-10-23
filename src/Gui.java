@@ -8,19 +8,20 @@ import java.awt.event.ActionListener;
  */
 public class Gui extends JFrame implements ActionListener {
     private final int CARDS_MAX = 8;
-
+    String categories [] = {"Hardness", "Specific gravity","Cleavage","Crystal abundance","Economic Value"};
     private JFrame frame;
 
 //    JButton[] buttons = new JButton[CARDS_MAX];
 
     //Category Screen
     private final JPanel panelMenu = new JPanel(new GridLayout(3, 0));
-    private final JPanel panelMenu2 = new JPanel(new GridLayout(1,1));
+    private final JPanel panelMenu2 = new JPanel(new FlowLayout());
     private JLabel menuWelcome = new JLabel("Welcome To mineral Super Trumps"+ "Select a Category");
-    private JLabel menuLabel1 = new JLabel("Dealer is ____" );
-    private JButton categorySelectBtn = new JButton("continue");
+    private JLabel menuLabel1 = new JLabel("Dealer is ____  Select category" );
 
-
+    private JComboBox<String> selectCategory = new JComboBox<>(categories);
+    JLabel categoryLabel = new JLabel("Dealer: Select a Category");
+    private JButton confirmCategory = new JButton("Confirm category");
 
 
     //Play Game Frame
@@ -41,12 +42,18 @@ public class Gui extends JFrame implements ActionListener {
         //Category Screen
         panelMenu.setVisible(true);
         panelMenu2.setVisible(true);
-        frame.getContentPane().add(panelMenu,BorderLayout.WEST);
-        frame.getContentPane().add(panelMenu2);
+        frame.getContentPane().add(panelMenu,BorderLayout.NORTH);
+        frame.getContentPane().add(panelMenu2,BorderLayout.CENTER);
 
-        //panelMenu2.setLayout( new GridLayout(1,1));
-        panelMenu2.add(menuLabel1, BorderLayout.NORTH);
-        panelMenu2.add(categorySelectBtn,BorderLayout.SOUTH);
+        //panelMenu2.setLayout( new GridLayout(2,3));
+        panelMenu.add(menuWelcome);
+        panelMenu.add(menuLabel1);
+
+
+        panelMenu2.add(categoryLabel);
+        panelMenu2.add(selectCategory);
+        panelMenu2.add(confirmCategory);
+
 
         //Play game Frame
         panel01.setVisible(false);
@@ -61,30 +68,69 @@ public class Gui extends JFrame implements ActionListener {
         JButton btn = null;
         for (int i = 0; i < CARDS_MAX; i++) {
             btn = new JButton();
+            ImageIcon img = new ImageIcon();
             //System.out.print(i);
             btn.setText("Card " + (i + 1));
             panel02.add(btn);  //adding to frame
             //System.out.print(btn.getText() + " ");
         }
 
-
         //action from category screen to play game screen
+        this.confirmCategory.addActionListener(this);
 
-        categorySelectBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panel01.setVisible(true);
-                panel02.setVisible(true);
-                panelMenu2.setVisible(false);
-            }
-        });
-    }
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //add();
-            validate();
-            repaint();
+            if (selectCategory.getSelectedItem().equals(categories[0])){
+                JOptionPane.showMessageDialog(this, "category is: " + categories[0]);
+                msg2.setText("Category: " + categories[0]);
+                //Game.startRound();
+                panel01.setVisible(true);
+                panel02.setVisible(true);
+                panelMenu.setVisible(false);
+                panelMenu2.setVisible(false);
+            }else if (selectCategory.getSelectedItem().equals(categories[1])) {
+                //JOptionPane.showMessageDialog(this, "category is: " + categories[1]);
+                msg2.setText("Category: " + categories[1]);
+                //Game.startRound();
+                panel01.setVisible(true);
+                panel02.setVisible(true);
+                panelMenu.setVisible(false);
+                panelMenu2.setVisible(false);
+            }else if (selectCategory.getSelectedItem().equals(categories[2])) {
+                //JOptionPane.showMessageDialog(this, "category is: " + categories[2]);
+                msg2.setText("Category: " + categories[2]);
+                //Game.startRound();
+                panel01.setVisible(true);
+                panel02.setVisible(true);
+                panelMenu.setVisible(false);
+                panelMenu2.setVisible(false);
+            }else if (selectCategory.getSelectedItem().equals(categories[3])) {
+                //JOptionPane.showMessageDialog(this, "category is: " + categories[3]);
+                msg2.setText("Category: " + categories[3]);
+                //Game.startRound();
+                panel01.setVisible(true);
+                panel02.setVisible(true);
+                panelMenu.setVisible(false);
+                panelMenu2.setVisible(false);
+            }else if (selectCategory.getSelectedItem().equals(categories[4])) {
+                //JOptionPane.showMessageDialog(this, "category is: " + categories[4]);
+                msg2.setText("Category: " + categories[4]);
+                //Game.startRound();
+                panel01.setVisible(true);
+                panel02.setVisible(true);
+                panelMenu.setVisible(false);
+                panelMenu2.setVisible(false);
+            }
+
+//            if (e.getSource()==confirmCategory){
+//                panel01.setVisible(true);
+//                panel02.setVisible(true);
+//                panelMenu.setVisible(false);
+//                panelMenu2.setVisible(false);
+//            }
+
         }
 
     public static void main(String[] args) {
@@ -107,7 +153,8 @@ public class Gui extends JFrame implements ActionListener {
         System.out.println("== Game is starting ==\n");
         System.out.println("Dealer:");
 
-        Game.playGame();
+       // Game.startRound();
+        //Game.playGame();
 
 
 

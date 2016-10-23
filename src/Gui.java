@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 /**
  * Created by Kyle on 13/10/2016.
@@ -10,10 +11,19 @@ public class Gui extends JFrame implements ActionListener {
     private final int CARDS_MAX = 8;
     String categories [] = {"Hardness", "Specific gravity","Cleavage","Crystal abundance","Economic Value"};
     private JFrame frame;
+    private  JFrame testFrame;
 
 //    JButton[] buttons = new JButton[CARDS_MAX];
 
-    //Category Screen
+    /*test Frame*/
+    JPanel testPanel = new JPanel(new CardLayout());
+    String path = "images";
+    ImageIcon image = new ImageIcon();
+    JLabel label = new JLabel();
+    JPanel card = new JPanel();
+
+
+    /*Category Screen*/
     private final JPanel panelMenu = new JPanel(new GridLayout(3, 0));
     private final JPanel panelMenu2 = new JPanel(new FlowLayout());
     private JLabel menuWelcome = new JLabel("Welcome To mineral Super Trumps"+ "Select a Category");
@@ -31,9 +41,20 @@ public class Gui extends JFrame implements ActionListener {
     private JLabel msg1 = new  JLabel("player x Turn");
     private JLabel msg2 = new JLabel(" Category value to beat: ");
     private JLabel msg3 = new JLabel(" Round: ");
+    static int categorySelect;
+
 
     public Gui() {
         super("Game Play");
+        testFrame = new JFrame();
+        testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        testFrame.getContentPane().setLayout(new BorderLayout());
+
+        card.setVisible(true);
+        testFrame.getContentPane().add(testPanel);
+        image = new ImageIcon (path + Game.deck.deckArray.get(0));
+        label = new JLabel (image);
+        card.add(label);
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -77,60 +98,52 @@ public class Gui extends JFrame implements ActionListener {
 
         //action from category screen to play game screen
         this.confirmCategory.addActionListener(this);
-
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (selectCategory.getSelectedItem().equals(categories[0])){
-                JOptionPane.showMessageDialog(this, "category is: " + categories[0]);
-                msg2.setText("Category: " + categories[0]);
-                //Game.startRound();
+                categorySelect = 1;
+                Game.startRound();
+                //msg2.setText("Category: " + categories[0]);
+                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[1])) {
-                //JOptionPane.showMessageDialog(this, "category is: " + categories[1]);
-                msg2.setText("Category: " + categories[1]);
-                //Game.startRound();
+                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                categorySelect = 2;
+                Game.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[2])) {
-                //JOptionPane.showMessageDialog(this, "category is: " + categories[2]);
-                msg2.setText("Category: " + categories[2]);
-                //Game.startRound();
+                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                categorySelect = 3;
+                Game.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[3])) {
-                //JOptionPane.showMessageDialog(this, "category is: " + categories[3]);
-                msg2.setText("Category: " + categories[3]);
-                //Game.startRound();
+                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                categorySelect = 4;
+                Game.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[4])) {
-                //JOptionPane.showMessageDialog(this, "category is: " + categories[4]);
-                msg2.setText("Category: " + categories[4]);
-                //Game.startRound();
+                categorySelect = 5;
+                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                Game.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }
-
-//            if (e.getSource()==confirmCategory){
-//                panel01.setVisible(true);
-//                panel02.setVisible(true);
-//                panelMenu.setVisible(false);
-//                panelMenu2.setVisible(false);
-//            }
-
         }
 
     public static void main(String[] args) {
@@ -146,6 +159,10 @@ public class Gui extends JFrame implements ActionListener {
         //aFrame.pack();
         aFrame.frame.setVisible(true);
 
+        aFrame.testFrame.setSize(600,600);
+        aFrame.testFrame.setVisible(true);
+
+
         Game Game = new Game(numPlayers); //creates a new Game object
         Game.dealCards();
         Game.dealer();
@@ -155,10 +172,16 @@ public class Gui extends JFrame implements ActionListener {
 
        // Game.startRound();
         //Game.playGame();
-
-
-
-
-
     }
+    public static int getCategoryToPlay() {
+        int categorySelect;
+        System.out.println("Choo category to play:" + "\n1 Hardness" + "\n2 Specific gravity" + "\n3 Cleavage" + "\n4 Crustal abundance" + "\n5 Economic value");
+        Scanner inputCategory = new Scanner(System.in);
+        categorySelect = inputCategory.nextInt();
+        return categorySelect;
+    }
+
+
+
+
 }

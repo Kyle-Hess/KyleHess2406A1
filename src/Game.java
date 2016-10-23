@@ -16,15 +16,15 @@ public class Game {
     private int numPlayers;
     private int dealerId;
     private Player[] players;
-    private static Deck deck;
+    public static Deck deck;
     Cards topCard = null;
     private int playersinRound;
     private static int valueInPlay;
-    private static String categoryValueAsString;
+    public static String categoryValueAsString;
     private int playerTurn;
     private int cardNum;
     private static int categoryNumber = 0;
-    private static String categoryAsString;
+    public static String categoryAsString;
     private int roundCounter;
 
     public Game(int numPlayers) {
@@ -90,8 +90,9 @@ public class Game {
     //gets the category to play.
 //currently get a card from the deck and uses its category stats
     public static void startRound() {
-        categoryNumber = main.getCategoryToPlay();
+        //categoryNumber = main.getCategoryToPlay();
 
+        categoryNumber = Gui.categorySelect;
         categoryAsString = getCategoryAsString(categoryNumber);
         setStartValues();
         //setCurrentValues();

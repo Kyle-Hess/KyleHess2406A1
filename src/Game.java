@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Created by Kyle on 16/09/2016.
@@ -78,7 +77,7 @@ public class Game {
 //================================
 
     private void startRoundPlayer(Player Player) {//test* - first Player chooses card to play  and sets the category
-        categoryNumber = getCategoryToPlay();
+        categoryNumber = main.getCategoryToPlay();
         Player.showPlayerCards(Player);
         int cardToPlay = main.getCardToPlay();
         topCard = Player.turn(cardToPlay);
@@ -91,7 +90,7 @@ public class Game {
     //gets the category to play.
 //currently get a card from the deck and uses its category stats
     public static void startRound() {
-        categoryNumber = getCategoryToPlay();
+        categoryNumber = main.getCategoryToPlay();
 
         categoryAsString = getCategoryAsString(categoryNumber);
         setStartValues();
@@ -150,13 +149,13 @@ public class Game {
         System.out.println("Score to beat is: " + categoryValueAsString.toUpperCase() + "\n");
     }
 
-    public static int getCategoryToPlay() {//get the category for the first round
-        int categorySelect;
-        System.out.println("Choose category to play:" + "\n1 Hardness" + "\n2 Specific gravity" + "\n3 Cleavage" + "\n4 Crustal abundance" + "\n5 Economic value");
-        Scanner inputCategory = new Scanner(System.in);
-        categorySelect = inputCategory.nextInt();
-        return categorySelect;
-    }
+//    public static int getCategoryToPlay() {//get the category for the first round
+//        int categorySelect;
+//        System.out.println("Choose category to play:" + "\n1 Hardness" + "\n2 Specific gravity" + "\n3 Cleavage" + "\n4 Crustal abundance" + "\n5 Economic value");
+//        Scanner inputCategory = new Scanner(System.in);
+//        categorySelect = inputCategory.nextInt();
+//        return categorySelect;
+//    }
 
     private static String getCategoryAsString(int categoryNumber) {//
         String categoryAsString;

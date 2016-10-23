@@ -73,6 +73,14 @@ public class main {
         } while (!gameOver);
     }
 
+    public static int getCategoryToPlay() {//get the category for the first round
+        int categorySelect;
+        System.out.println("Choose category to play:" + "\n1 Hardness" + "\n2 Specific gravity" + "\n3 Cleavage" + "\n4 Crustal abundance" + "\n5 Economic value");
+        Scanner inputCategory = new Scanner(System.in);
+        categorySelect = inputCategory.nextInt();
+        return categorySelect;
+    }
+
     public static int playOrPass() {//asks the user to play a card or pass their turn
         int playOrPass;
         Scanner input_playOrPass = new Scanner(System.in);

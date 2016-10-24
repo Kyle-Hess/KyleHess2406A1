@@ -15,7 +15,7 @@ public class Game {
     private static final int NUM_CARDS = 8;
     private int numPlayers;
     private int dealerId;
-    private Player[] players;
+    public Player[] players;
     public static Deck deck;
     Cards topCard = null;
     private int playersinRound;
@@ -92,7 +92,7 @@ public class Game {
     public static void startRound() {
         //categoryNumber = main.getCategoryToPlay();
 
-        categoryNumber = Gui.categorySelect;
+        categoryNumber = GuiMain.categorySelect;
         categoryAsString = getCategoryAsString(categoryNumber);
         setStartValues();
         //setCurrentValues();

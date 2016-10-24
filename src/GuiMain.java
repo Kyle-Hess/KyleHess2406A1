@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Created by Kyle on 13/10/2016.
  */
-public class Gui extends JFrame implements ActionListener {
+public class GuiMain extends JFrame implements ActionListener {
     private final int CARDS_MAX = 8;
     String categories [] = {"Hardness", "Specific gravity","Cleavage","Crystal abundance","Economic Value"};
     private JFrame frame;
@@ -17,7 +17,7 @@ public class Gui extends JFrame implements ActionListener {
 
     /*test Frame*/
     JPanel testPanel = new JPanel(new CardLayout());
-    String path = "images";
+    String path = "\\images";
     ImageIcon image = new ImageIcon();
     JLabel label = new JLabel();
     JPanel card = new JPanel();
@@ -35,16 +35,19 @@ public class Gui extends JFrame implements ActionListener {
 
 
     //Play Game Frame
-    private final JPanel panel01 = new JPanel(new GridLayout(3, 0));
+    private final JPanel panel01 = new JPanel(new GridLayout(4, 0));
     private final JPanel panel02 = new JPanel(new GridLayout(2, 4));
+
+    JButton btn = new JButton();
 
     private JLabel msg1 = new  JLabel("player x Turn");
     private JLabel msg2 = new JLabel(" Category value to beat: ");
     private JLabel msg3 = new JLabel(" Round: ");
+    private JButton pass = new JButton("Pass Turn");
     static int categorySelect;
 
 
-    public Gui() {
+    public GuiMain() {
         super("Game Play");
         testFrame = new JFrame();
         testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -85,6 +88,11 @@ public class Gui extends JFrame implements ActionListener {
         panel01.add(msg1);
         panel01.add(msg2);
         panel01.add(msg3);
+        panel01.add(pass);
+
+        //GuiGame.playersTurn();
+        //Player.PlayerCards(panel01,btn);
+
 
         JButton btn = null;
         for (int i = 0; i < CARDS_MAX; i++) {
@@ -154,7 +162,7 @@ public class Gui extends JFrame implements ActionListener {
             numPlayers = Integer.parseInt( JOptionPane.showInputDialog(null, welcome, "How Many Player? (3 to 5)"));
         } while (numPlayers < 3 || numPlayers > 5);
 
-        Gui aFrame = new Gui();
+        GuiMain aFrame = new GuiMain();
         aFrame.frame.setSize(500, 400);
         //aFrame.pack();
         aFrame.frame.setVisible(true);

@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -6,7 +8,7 @@ import java.util.Collections;
  */
 public class Player {
     static ArrayList<Cards> cards;
-    public String playerId;
+    public static String playerId;
     private int n;
     public static boolean setCards;
 
@@ -58,6 +60,16 @@ public String getPlayer() {
             System.out.println("Card #" + (i + 1) + ":\n" + players.cards.get(i));
     }
 
+    public static void PlayerCards(JPanel panel01, JButton btn) {//Shows Players cards
+        for (int x = 0; x < Player.cards.size(); x++) {
+            String filePath = "images\\" + Player.cards.get(x);
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
+            btn.add(new JButton(imageIcon));
+            //button.get(x).addActionListener(this);
+            panel01.add(btn);
+        }
+    }
+
     public void playersCards() {//shows players cards
         System.out.println(playerId + "'s turn. " + "cards: " + cards.size());
         for (Cards card : cards) {
@@ -71,5 +83,7 @@ public String getPlayer() {
     }
 
 
+    public void PlayerCards(Player player) {
 
+    }
 }

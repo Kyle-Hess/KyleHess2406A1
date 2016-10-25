@@ -9,6 +9,7 @@ public class main {
     static boolean gameOver;
 
     public static void main(String[] args) {
+
         main t = new main();
     }
 

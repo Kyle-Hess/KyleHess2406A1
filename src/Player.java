@@ -7,6 +7,9 @@ import java.util.Collections;
  * Created by Kyle on 16/09/2016.
  */
 public class Player {
+    static GameControl lCinstance;
+    static GuiGame instance;
+
     static ArrayList<Cards> cards;
     public static String playerId;
     private int n;
@@ -84,6 +87,14 @@ public String getPlayer() {
 
 
     public void PlayerCards(Player player) {
+        for (int x = 0; x < player.cards.size(); x++) {
+            String filePath = "images\\" + Player.cards.get(x);
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
+            GuiGame.button.add(new JButton(imageIcon));
+            //button.get(x).addActionListener(this);
+            //panel01.add(button);
+        }
 
     }
+
 }

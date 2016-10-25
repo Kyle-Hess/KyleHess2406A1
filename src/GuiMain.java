@@ -68,7 +68,6 @@ public class GuiMain extends JFrame implements ActionListener {
         panelMenu2.setVisible(true);
         frame.getContentPane().add(panelMenu,BorderLayout.NORTH);
         frame.getContentPane().add(panelMenu2,BorderLayout.CENTER);
-
         //panelMenu2.setLayout( new GridLayout(2,3));
         panelMenu.add(menuWelcome);
         panelMenu.add(menuLabel1);
@@ -112,41 +111,41 @@ public class GuiMain extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (selectCategory.getSelectedItem().equals(categories[0])){
                 categorySelect = 1;
-                Game.startRound();
+                GuiGame.startRound();
                 //msg2.setText("Category: " + categories[0]);
-                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[1])) {
-                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
                 categorySelect = 2;
-                Game.startRound();
+                GuiGame.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[2])) {
-                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
                 categorySelect = 3;
-                Game.startRound();
+                GuiGame.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[3])) {
-                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
                 categorySelect = 4;
-                Game.startRound();
+                GuiGame.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);
                 panelMenu2.setVisible(false);
             }else if (selectCategory.getSelectedItem().equals(categories[4])) {
                 categorySelect = 5;
-                msg2.setText("Category: "+Game.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
-                Game.startRound();
+                msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+                GuiGame.startRound();
                 panel01.setVisible(true);
                 panel02.setVisible(true);
                 panelMenu.setVisible(false);

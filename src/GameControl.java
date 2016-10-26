@@ -16,8 +16,8 @@ public class GameControl {
         guiCategory.setVisible(true);
     }
 
-    public static void startGuiGame(){
-        GuiGame guiGame = new GuiGame();
+    public static void startGuiGame(int numPlayers){
+        GuiGame guiGame = new GuiGame(numPlayers);
         guiGame.setSize(length, height);
         guiGame.setVisible(true);
     }

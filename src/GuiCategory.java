@@ -21,6 +21,7 @@ public class GuiCategory extends JFrame implements ActionListener {
     JLabel categoryLabel = new JLabel("Dealer: Select a Category");
     JButton confirmCategory = new JButton("Confirm category");
     static int categorySelect;
+    public int numPlayers;
 
     public static void getLaunchControl(GameControl gameControl){
         lCinstance = gameControl;
@@ -53,7 +54,7 @@ public class GuiCategory extends JFrame implements ActionListener {
         if (selectCategory.getSelectedItem().equals(categories[0])){
             categorySelect = 1;
             //GuiGame.startRound();
-            GameControl.startGuiGame();
+            GameControl.startGuiGame(numPlayers);
             //msg2.setText("Category: " + categories[0]);
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
             JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);

@@ -60,13 +60,14 @@ public class GuiGame extends JFrame implements ActionListener{
         lCinstance = gameControl;
     }
 
-    public GuiGame() {
+    public GuiGame(int numPlayers) {
         super("Mineral Super Trumps");
         //this.numPlayers = numPlayers;
         setLayout(borderLayout);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JOptionPane.showMessageDialog(null, "It is now " + Player.playerId + "'s turn");
+        //dealer();
+        JOptionPane.showMessageDialog(null, "It is now player:  " + dealerId + "'s turn");
 
 
         //Play game Frame
@@ -134,7 +135,7 @@ public class GuiGame extends JFrame implements ActionListener{
 //            //System.out.print(btn.getText() + " ");
 //        }
 //        for (int x = 0; x < instance.players.cards.size(); x++) {
-//            String filePath = "\\images" + Player.cards.get(x);
+//            String filePath = "//images//" + Player.cards.get(x);
 //            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
 //            button.add(new JButton(imageIcon));
 //            //button.get(x).addActionListener(this);
@@ -143,7 +144,7 @@ public class GuiGame extends JFrame implements ActionListener{
 
     }
     private void playersTurn() {
-        for (int i = 0; i < instance.players.length; i++) {
+        for (int i = 0; i < players.length; i++) {
             //if (!Player.pass) {
             players[i].PlayerCards(players[i]);
 

@@ -25,17 +25,18 @@ public class Player {
 //        this.cards = cards;
 //    }
 
- public void setCards(ArrayList<Cards> Cards) {
-     Player.cards = new ArrayList<>(Cards);
-}
+    public void setCards(ArrayList<Cards> Cards) {
+        Player.cards = new ArrayList<>(Cards);
+    }
 
-public String getPlayer() {
-    String hand = "";
+    public String getPlayer() {
+        String hand = "";
 
-    for (Cards i : cards) {
-        hand += i + " ";}
-    return ("Player name: " + this.playerId+"\n " + hand);
-}
+        for (Cards i : cards) {
+            hand += i + " ";
+        }
+        return ("Player name: " + this.playerId + "\n " + hand);
+    }
 
     public static Cards turn(int cardToPlay) {//removes the card placed from the players Deck
         Cards topCard = Player.cards.get(cardToPlay - 1);
@@ -50,9 +51,9 @@ public String getPlayer() {
             System.out.println("Out of cards");
 
         } else {
-            player.cards.add(deck.deckArray.get(deck.deckArray.size() - 1)) ;
+            player.cards.add(deck.deckArray.get(deck.deckArray.size() - 1));
             deck.deckArray.remove(deck.deckArray.size() - 1);
-            System.out.println("Card: "  + "* Was drawn * \n"
+            System.out.println("Card: " + "* Was drawn * \n"
                     + "=====================");
         }
     }

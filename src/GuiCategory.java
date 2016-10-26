@@ -10,12 +10,12 @@ public class GuiCategory extends JFrame implements ActionListener {
     static GuiGame instance;
     static GameControl lCinstance;
 
-    String categories [] = {"Hardness", "Specific gravity","Cleavage","Crystal abundance","Economic Value"};
+    String categories[] = {"Hardness", "Specific gravity", "Cleavage", "Crystal abundance", "Economic Value"};
     /*Category Screen*/
     final JPanel panelMenu = new JPanel(new GridLayout(3, 0));
     final JPanel panelMenu2 = new JPanel(new FlowLayout());
-    JLabel menuWelcome = new JLabel("Welcome To mineral Super Trumps"+ "Select a Category");
-    JLabel menuLabel1 = new JLabel("Dealer is ____  Select category" );
+    JLabel menuWelcome = new JLabel("Welcome To mineral Super Trumps" + "Select a Category");
+    JLabel menuLabel1 = new JLabel("Dealer is ____  Select category");
 
     JComboBox<String> selectCategory = new JComboBox<>(categories);
     JLabel categoryLabel = new JLabel("Dealer: Select a Category");
@@ -31,18 +31,18 @@ public class GuiCategory extends JFrame implements ActionListener {
     static int categorySelect;
     public int numPlayers;
 
-    public static void getLaunchControl(GameControl gameControl){
+    public static void getLaunchControl(GameControl gameControl) {
         lCinstance = gameControl;
 
     }
 
-    public GuiCategory(Game gameInstance){
+    public GuiCategory(Game gameInstance) {
 
         //Category Screen
         panelMenu.setVisible(true);
         panelMenu2.setVisible(true);
-        add(panelMenu,BorderLayout.NORTH);
-        add(panelMenu2,BorderLayout.CENTER);
+        add(panelMenu, BorderLayout.NORTH);
+        add(panelMenu2, BorderLayout.CENTER);
 
         //panelMenu2.setLayout( new GridLayout(2,3));
         panelMenu.add(menuWelcome);
@@ -61,7 +61,8 @@ public class GuiCategory extends JFrame implements ActionListener {
         //this.selectCategory.addActionListener(this);
         this.confirmCategory.addActionListener(this);
     }
-//action from category screen to play game screen
+
+    //action from category screen to play game screen
     @Override
     public void actionPerformed(ActionEvent e) {
 //        if (selectCategory.getSelectedItem().equals(categories[0])){
@@ -101,40 +102,40 @@ public class GuiCategory extends JFrame implements ActionListener {
 //            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
 //            dispose();
 //        }
-        if (selectCategory.getSelectedItem().equals(categories[0])){
+        if (selectCategory.getSelectedItem().equals(categories[0])) {
             categorySelect = 1;
             GameControl.startGuiGame();
             //GuiGame.startRound();
             //msg2.setText("Category: " + categories[0]);
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
             //JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
-            GuiGame.msg2.setText("Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+            GuiGame.msg2.setText("Category: " + GuiGame.categoryAsString + "Value to beat: " + GuiGame.categoryValueAsString);
             dispose();
 
-        }else if (selectCategory.getSelectedItem().equals(categories[1])) {
+        } else if (selectCategory.getSelectedItem().equals(categories[1])) {
             categorySelect = 2;
             GuiGame.startRound();
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
-            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString + "Value to beat: " + GuiGame.categoryValueAsString);
             dispose();
 
-        }else if (selectCategory.getSelectedItem().equals(categories[2])) {
+        } else if (selectCategory.getSelectedItem().equals(categories[2])) {
             categorySelect = 3;
             GuiGame.startRound();
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
-            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString + "Value to beat: " + GuiGame.categoryValueAsString);
             dispose();
-        }else if (selectCategory.getSelectedItem().equals(categories[3])) {
+        } else if (selectCategory.getSelectedItem().equals(categories[3])) {
             categorySelect = 4;
             GuiGame.startRound();
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
-            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString + "Value to beat: " + GuiGame.categoryValueAsString);
             dispose();
-        }else if (selectCategory.getSelectedItem().equals(categories[4])) {
+        } else if (selectCategory.getSelectedItem().equals(categories[4])) {
             categorySelect = 5;
             GuiGame.startRound();
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
-            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString + "Value to beat: " + GuiGame.categoryValueAsString);
             dispose();
         }
     }

@@ -128,7 +128,7 @@ public class Game {
     private void passPlayerTurn(Player player) {//handles Player passes.
         //deck.drawCard();
         //Player.drawCard(player, deck );
-        Player.drawACard(player,deck);
+        Player.drawACard(player, deck);
 
         Player.setCards = true;
         playersinRound = playersinRound - 1;

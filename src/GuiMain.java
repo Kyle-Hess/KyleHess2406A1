@@ -15,7 +15,7 @@ public class GuiMain extends JFrame implements ActionListener {
     private JFrame testFrame;
 
 
-//    JButton[] buttons = new JButton[CARDS_MAX];
+    //    JButton[] buttons = new JButton[CARDS_MAX];
     /*test Frame*/
     JPanel testPanel = new JPanel(new CardLayout());
     String path = "\\images";

@@ -34,7 +34,7 @@ public class test extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //frame.setLocationRelativeTo(null);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
 
         frame.getContentPane().add(panelMenu);
 
@@ -43,7 +43,6 @@ public class test extends JFrame implements ActionListener {
         panelMenu.add(exitButton);
         runButton.addActionListener(this);
         exitButton.addActionListener(this);
-
 
 
 //        JButton btn = null;
@@ -92,7 +91,6 @@ public class test extends JFrame implements ActionListener {
         aFrame.frame.setVisible(true);
 
 
-
 //        GuiGame Game = new GuiGame(numPlayers); //creates a new Game object
 
 //        //GuiGame.dealer();
@@ -120,8 +118,6 @@ public class test extends JFrame implements ActionListener {
         // Game.startRound();
         //Game.playGame();
     }
-
-
 
 
 }

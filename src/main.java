@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * Created by Kyle on 15/08/2016.
- *
+ * <p>
  * BUG: SOMETIMES AFTER ENTERING PLAYER AMOUNT AN EXCEPTION OCCURS* restart required
  */
 public class main {

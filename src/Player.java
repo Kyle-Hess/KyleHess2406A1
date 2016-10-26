@@ -63,22 +63,27 @@ public String getPlayer() {
             System.out.println("Card #" + (i + 1) + ":\n" + players.cards.get(i));
     }
 
-    public static void PlayerCards(JPanel panel01, JButton btn) {//Shows Players cards
+    public static void PlayerCards(JPanel panel02, JButton button) {//Shows Players cards
         for (int x = 0; x < Player.cards.size(); x++) {
             String filePath = "images\\" + Player.cards.get(x);
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
-            btn.add(new JButton(imageIcon));
+            button.add(new JButton(imageIcon));
             //button.get(x).addActionListener(this);
-            panel01.add(btn);
+            panel02.add(button);
         }
     }
 
-    public void playersCards() {//shows players cards
+    public static void playersCards() {//shows players cards
         System.out.println(playerId + "'s turn. " + "cards: " + cards.size());
-        for (Cards card : cards) {
-            System.out.println("card: " + n + "\n" + card.toString());
-            n++;
-        }
+//        for (Cards card : cards) {
+//            String filePath = "images\\" + card;
+//            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
+//            button.add(new JButton(imageIcon));
+//            //button.get(x).addActionListener(this);
+//            panel02.add(button);
+//            System.out.println("card: " + n + "\n" + card.toString());
+//            n++;
+//        }
     }
 
     public String toString() {
@@ -87,14 +92,23 @@ public String getPlayer() {
 
 
     public void PlayerCards(Player player) {
-        for (int x = 0; x < player.cards.size(); x++) {
-            String filePath = "images\\" + Player.cards.get(x);
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
-            GuiGame.button.add(new JButton(imageIcon));
-            //button.get(x).addActionListener(this);
-            //panel01.add(button);
-        }
+//        for (int x = 0; x < player.cards.size(); x++) {
+//            String filePath = "images\\" + Player.cards.get(x);
+//            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
+//            GuiGame.button.add(new JButton(imageIcon));
+//            //button.get(x).addActionListener(this);
+//            //panel01.add(button);
+//        }
 
     }
 
+    public static void playersCards(JPanel panel02, JButton button) {
+        for (Cards card : cards) {
+            String filePath = "images\\" + card;
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
+            button.add(new JButton(imageIcon));
+            //button.get(x).addActionListener(this);
+            panel02.add(button);
+        }
+    }
 }

@@ -1,6 +1,5 @@
 import com.dd.plist.PropertyListFormatException;
 import org.xml.sax.SAXException;
-
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
@@ -17,17 +16,15 @@ import java.util.Random;
  */
 
 public class GuiGame extends JFrame implements ActionListener{
-    private static final int CARDS_MAX =8;
+
     static Integer playerLoop = 0;
     private static final int NUM_CARDS = 8;
     private static int numPlayers;
     private static int dealerId;
     public static Player[] players;
-
     public static Deck deck;
     static GameControl lCinstance;
-    static GuiGame instance;
-
+    static Game instance;
     Cards topCard = null;
     private int playersinRound;
     private static int valueInPlay;
@@ -37,34 +34,33 @@ public class GuiGame extends JFrame implements ActionListener{
     private static int categoryNumber = 0;
     public static String categoryAsString;
     private int roundCounter;
-
     //============
 
     BorderLayout borderLayout = new BorderLayout();
 
     //public static JButton button = new ArrayList<>();
-    static JButton button = new JButton();
-
-
-
+    //static JButton button = new JButton();
+    public ArrayList<JButton> button = new ArrayList<>();
     private final JPanel panel01 = new JPanel(new GridLayout(4, 0));
-    private final JPanel panel02 = new JPanel(new GridLayout(2, 4));
-
+    private final JPanel panel02 = new JPanel(new FlowLayout());
     private JLabel msg1 = new  JLabel("player x Turn");
-    private JLabel msg2 = new JLabel(" Category value to beat: ");
+    public static JLabel msg2 = new JLabel(" Category value to beat: " );
     private JLabel msg3 = new JLabel(" Round: ");
     private JButton pass = new JButton("Pass Turn");
 
+    //JButton cards[] = new JButton[Player.cards.size()];
+    JButton cards[] = new JButton[8];
 
     public static void getLaunchControl(GameControl gameControl) {
         lCinstance = gameControl;
     }
 
-    public GuiGame(int numPlayers) {
+    public GuiGame(Game gameInstance) {
         super("Mineral Super Trumps");
         //this.numPlayers = numPlayers;
         setLayout(borderLayout);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        instance = gameInstance;
 
         //dealer();
         JOptionPane.showMessageDialog(null, "It is now player:  " + dealerId + "'s turn");
@@ -74,27 +70,53 @@ public class GuiGame extends JFrame implements ActionListener{
         panel01.setVisible(true);
         panel02.setVisible(true);
         getContentPane().add(panel01,BorderLayout.WEST);
-        getContentPane().add(panel02,BorderLayout.EAST);
+        //getContentPane().add(panel02,BorderLayout.EAST);
+        getContentPane().add(panel02);
 
         panel01.add(msg1);
         panel01.add(msg2);
         panel01.add(msg3);
         panel01.add(pass);
-        //getCardButtons();
 
-        playersTurn();
+        //instance = gameInstance;
+        //dealCards();
+        //playersTurn();
+        //Player.playersCards(panel02, button);
+        getCardButtons();
+
+//        JButton btn = null;
+//        for (int i = 0; i < CARDS_MAX; i++) {
+//            btn = new JButton();
+//            ImageIcon img = new ImageIcon();
+//            //System.out.print(i);
+//            btn.setText("Card " + (i + 1));
+//            panel02.add(btn);  //adding to frame
+//            //System.out.print(btn.getText() + " ");
+//        }
+
+        //playersTurn();
 //        for (int i = 0; i < players.length; i++) {
 //            players[i].PlayerCards(players[i]);
 //        }
-
-
         pass.addActionListener(this);
     }
 
+    private void playersTurn() {
+        for (int i = 0; i < players.length; i++) {
+            //if (!Player.pass) {
+            players[i].PlayerCards(players[i]);
+
+            //Player.PlayerCards();
+            //players[i].getPlayer().;
+
+            //setCurrentValues();
+            //displayCurrentValue();
+
+            //playerTurn = numPlayers;
+        }
+    }
 
 //=============
-
-
 
     public static void dealer() {// selects a random Player to be dealer
         Random random = new Random();
@@ -117,12 +139,21 @@ public class GuiGame extends JFrame implements ActionListener{
     }
 
     public void getCardButtons() {
-//        for (int x = 0; x < Player.get().cards.size(); x++) {
-//            String filePath = "images\\" + Player.cards.get(x);
-//            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_DEFAULT));
-//            button.add(new JButton(imageIcon));
-//            //button.get(x).addActionListener(this);
-//            contentPane.add(button.get(x));
+
+        for (int x = 0; x < Player.cards.size(); x++) {
+            String filePath = "images\\" + Player.cards.get(x).fileName;
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(135, 189, Image.SCALE_SMOOTH));
+            button.add(new JButton(imageIcon));
+            button.get(x).addActionListener(this);
+            panel02.add(button.get(x));
+        }
+
+
+//        for (int i = 0; i < players.length; i++) {
+//
+//            cards[i] = new JButton((Action)displayCard(Player.cards.get(i)));
+//            panel02.add(cards[i]);
+//
 //        }
 
 //        JButton btn = null;
@@ -143,19 +174,15 @@ public class GuiGame extends JFrame implements ActionListener{
 //        }
 
     }
-    private void playersTurn() {
-        for (int i = 0; i < players.length; i++) {
-            //if (!Player.pass) {
-            players[i].PlayerCards(players[i]);
 
-            //players[i].getPlayer().;
+        private Image displayCard(Cards card) {
+            ImageIcon cardImage = new ImageIcon("images\\" + card.get(card.fileName));
+            Image img = cardImage.getImage() ;
+            Image newImg = img.getScaledInstance(135, 189,  Image.SCALE_DEFAULT) ;
+            return newImg;
 
-            //setCurrentValues();
-            //displayCurrentValue();
-
-            //playerTurn = numPlayers;
-        }
     }
+
 //    public void playersTurn() {
 //        for (int i = 0; i < players.length; i++) {
 //            //if (!Player.pass) {

@@ -14,7 +14,7 @@ import java.util.Random;
 public class Game {
     private static final int NUM_CARDS = 8;
     private int numPlayers;
-    private int dealerId;
+    public int dealerId;
     public Player[] players;
     public static Deck deck;
     Cards topCard = null;

@@ -20,6 +20,14 @@ public class GuiCategory extends JFrame implements ActionListener {
     JComboBox<String> selectCategory = new JComboBox<>(categories);
     JLabel categoryLabel = new JLabel("Dealer: Select a Category");
     JButton confirmCategory = new JButton("Confirm category");
+
+    JButton hardnessButton = new JButton("Hardness");
+    JButton specificGravityButton = new JButton("Specific Gravity");
+    JButton cleavageButton = new JButton("Cleavage");
+    JButton crustalAbundanceButton = new JButton("Crustal Abundance");
+    JButton economicValueButton = new JButton("Economic Value");
+
+
     static int categorySelect;
     public int numPlayers;
 
@@ -28,7 +36,7 @@ public class GuiCategory extends JFrame implements ActionListener {
 
     }
 
-    public GuiCategory(GuiGame gameInstance){
+    public GuiCategory(Game gameInstance){
 
         //Category Screen
         panelMenu.setVisible(true);
@@ -40,25 +48,67 @@ public class GuiCategory extends JFrame implements ActionListener {
         panelMenu.add(menuWelcome);
         panelMenu.add(menuLabel1);
 
-
         panelMenu2.add(categoryLabel);
         panelMenu2.add(selectCategory);
         panelMenu2.add(confirmCategory);
 
-        this.selectCategory.addActionListener(this);
+//        panelMenu2.add(hardnessButton);
+//        panelMenu2.add(specificGravityButton);
+//        panelMenu2.add(cleavageButton);
+//        panelMenu2.add(crustalAbundanceButton);
+//        panelMenu2.add(economicValueButton);
+
+        //this.selectCategory.addActionListener(this);
+        this.confirmCategory.addActionListener(this);
     }
 //action from category screen to play game screen
     @Override
     public void actionPerformed(ActionEvent e) {
-
+//        if (selectCategory.getSelectedItem().equals(categories[0])){
+//            categorySelect = 1;
+//            GuiGame.startRound();
+//            GameControl.startGuiGame(numPlayers);
+//            //GuiGame.startRound();
+//            //msg2.setText("Category: " + categories[0]);
+//            //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+//            //JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+//            GuiGame.msg2.setText("Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+//            dispose();
+//
+//        }else if (e.getSource() == specificGravityButton) {
+//            categorySelect = 2;
+//            GuiGame.startRound();
+//            //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+//            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+//            dispose();
+//
+//        }else if (e.getSource() == cleavageButton) {
+//            categorySelect = 3;
+//            GuiGame.startRound();
+//            //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+//            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+//            dispose();
+//        }else if (e.getSource() == crustalAbundanceButton) {
+//            categorySelect = 4;
+//            GuiGame.startRound();
+//            //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+//            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+//            dispose();
+//        }else if (e.getSource() == economicValueButton) {
+//            categorySelect = 5;
+//            GuiGame.startRound();
+//            //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
+//            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+//            dispose();
+//        }
         if (selectCategory.getSelectedItem().equals(categories[0])){
             categorySelect = 1;
+            GameControl.startGuiGame();
             //GuiGame.startRound();
-            GameControl.startGuiGame(numPlayers);
             //msg2.setText("Category: " + categories[0]);
             //msg2.setText("Category: "+GuiGame.categoryAsString+"\n Value to beat: "+Game.categoryValueAsString);
-            JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
-
+            //JOptionPane.showMessageDialog(null, "Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
+            GuiGame.msg2.setText("Category: " + GuiGame.categoryAsString+"Value to beat: "+GuiGame.categoryValueAsString);
             dispose();
 
         }else if (selectCategory.getSelectedItem().equals(categories[1])) {

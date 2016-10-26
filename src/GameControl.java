@@ -2,11 +2,13 @@
  * Created by Kyle on 25/10/2016.
  */
 public class GameControl {
-    static GuiGame instance;
-    static final int length = 600;
-    static  final int height = 600;
 
-    public static void getGameInstance(GuiGame gameInstance){
+    static Game instance;
+    static final int length = 800;
+    static  final int height = 800;
+
+
+    public static void getGameInstance(Game gameInstance){
         instance = gameInstance;
     }
 
@@ -16,8 +18,8 @@ public class GameControl {
         guiCategory.setVisible(true);
     }
 
-    public static void startGuiGame(int numPlayers){
-        GuiGame guiGame = new GuiGame(numPlayers);
+    public static void startGuiGame(){
+        GuiGame guiGame = new GuiGame(instance);
         guiGame.setSize(length, height);
         guiGame.setVisible(true);
     }

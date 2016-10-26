@@ -13,8 +13,8 @@ import java.text.ParseException;
  * Created by Kyle on 13/10/2016.
  */
 public class test extends JFrame implements ActionListener {
-    private static GuiGame game;
-    private static GameControl gameControl;
+    static Game game;
+    static GameControl gameControl;
 
     private final int CARDS_MAX = 8;
     private JFrame frame;
@@ -85,26 +85,27 @@ public class test extends JFrame implements ActionListener {
             numPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, welcome, "How Many Player? (3 to 5)"));
         } while (numPlayers < 3 || numPlayers > 5);
 
+        game = new Game(numPlayers);
+
         test aFrame = new test();
-        aFrame.frame.setSize(500, 400);
+        aFrame.frame.setSize(800, 400);
         aFrame.frame.setVisible(true);
 
 
 
-        //Game Game = new Game(numPlayers); //creates a new Game object
-//        GuiGame.dealCards();
+//        GuiGame Game = new GuiGame(numPlayers); //creates a new Game object
+
 //        //GuiGame.dealer();
 //
-//        gameControl = new GameControl();
+        gameControl = new GameControl();
 //        //GameControl.getGameInstance(GuiGame);
 //        GuiCategory.getLaunchControl(gameControl);
 //        GuiGame.getLaunchControl(gameControl);
 
-        game = new GuiGame(numPlayers);
-        game.deck = new Deck();
-        game.players = new Player[]{};
+        //game = new GuiGame();
+        //game.deck = new Deck();
+        //game.players = new Player[]{};
 
-        gameControl = new GameControl();
 
         gameControl.getGameInstance(game);
         GuiGame.getLaunchControl(gameControl);
@@ -120,19 +121,7 @@ public class test extends JFrame implements ActionListener {
         //Game.playGame();
     }
 
-    private static void startScreen() {
-        //GuiWelcome guiWelcome = new GuiWelcome();
-//        game.setSize(500, 200);
-//        game.setVisible(true);
 
-    }
-//    public static int getCategoryToPlay() {
-//        int categorySelect;
-//        System.out.println("Choo category to play:" + "\n1 Hardness" + "\n2 Specific gravity" + "\n3 Cleavage" + "\n4 Crustal abundance" + "\n5 Economic value");
-//        Scanner inputCategory = new Scanner(System.in);
-//        categorySelect = inputCategory.nextInt();
-//        return categorySelect;
-//    }
 
 
 }

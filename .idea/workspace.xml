@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e2600be-d80f-42fd-83eb-2b4bc059e00f" name="Default" comment="-small colour changes &#10;-every category gets set and updates label&#10;">
+    <list default="true" id="0e2600be-d80f-42fd-83eb-2b4bc059e00f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GuiGame.java" afterPath="$PROJECT_DIR$/src/GuiGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GuiMain.java" afterPath="$PROJECT_DIR$/src/GuiMain.java" />
     </list>
     <ignored path="KyleHessA1.iws" />
@@ -48,8 +46,8 @@
       <file leaf-file-name="GuiMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GuiMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="215" column="51" selection-start-line="215" selection-start-column="51" selection-end-line="215" selection-end-column="51" />
+            <state relative-caret-position="378">
+              <caret line="139" column="61" selection-start-line="139" selection-start-column="61" selection-end-line="139" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -866,7 +864,7 @@
       <workItem from="1477443522848" duration="532000" />
       <workItem from="1477461132112" duration="25962000" />
       <workItem from="1477526048203" duration="30000" />
-      <workItem from="1477527538538" duration="1555000" />
+      <workItem from="1477527538538" duration="1649000" />
     </task>
     <task id="LOCAL-00001" summary="attempting to import card info">
       <created>1472361543173</created>
@@ -1085,11 +1083,18 @@
       <option name="project" value="LOCAL" />
       <updated>1477487789866</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="-small colour changes &#10;-every category gets set and updates label&#10;- temp. added dealer id on player turn label&#10;">
+      <created>1477529143922</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1477529143922</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229378000" />
+    <option name="totallyTimeSpent" value="229472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1102,7 +1107,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23890063" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27378437" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27378437" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1165,7 +1170,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="can create player objects from number input" />
     <MESSAGE value="-now imports cards from file to array and, can print from main&#10;-changed player input in main" />
     <MESSAGE value="-added deck class&#10;-now imports cards from file to array and, can print from main&#10;-changed player input in main" />
     <MESSAGE value="-each player now has a hand of cards&#10;-added game class&#10;-re-did player class" />
@@ -1190,7 +1194,8 @@
     <MESSAGE value="-Implementing separate frames&#10;-added GameControl&#10;-added GuiCategory frame&#10;-added test method&#10;" />
     <MESSAGE value="-&#10;" />
     <MESSAGE value="-attempted to have multiple frames adn create a game instance&#10;i don't think numPlayers is being imported correctly/ players arn't being created&#10;&#10;-GuiMain works: now generates buttons with a players hand and with card images&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="-attempted to have multiple frames adn create a game instance&#10;i don't think numPlayers is being imported correctly/ players arn't being created&#10;&#10;-GuiMain works: now generates buttons with a players hand and with card images&#10;" />
+    <MESSAGE value="-small colour changes &#10;-every category gets set and updates label&#10;- temp. added dealer id on player turn label&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="-small colour changes &#10;-every category gets set and updates label&#10;- temp. added dealer id on player turn label&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1494,8 +1499,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GuiMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="215" column="51" selection-start-line="215" selection-start-column="51" selection-end-line="215" selection-end-column="51" />
+        <state relative-caret-position="378">
+          <caret line="139" column="61" selection-start-line="139" selection-start-column="61" selection-end-line="139" selection-end-column="61" />
           <folding />
         </state>
       </provider>

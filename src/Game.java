@@ -14,17 +14,17 @@ import java.util.Random;
 public class Game {
     private static final int NUM_CARDS = 8;
     private int numPlayers;
-    public int dealerId;
-    public Player[] players;
+    public static int dealerId;
+    public static Player[] players;
     public static Deck deck;
     Cards topCard = null;
     private int playersinRound;
-    private int valueInPlay;
+    private static int valueInPlay;
     public static String categoryValueAsString;
     private int playerTurn;
     private int cardNum;
-    private int categoryNumber = 0;
-    public String categoryAsString;
+    private static int categoryNumber = 0;
+    public static String categoryAsString;
     private int roundCounter;
 
     public Game(int numPlayers) {
@@ -89,7 +89,7 @@ public class Game {
 
     //gets the category to play.
 //currently get a card from the deck and uses its category stats
-    public void startRound() {
+    public static void startRound() {
         //categoryNumber = main.getCategoryToPlay();
 
         categoryNumber = GuiMain.categorySelect;
@@ -135,7 +135,7 @@ public class Game {
         System.out.println(playersinRound + " players left in round.");
     }
 
-    private void setStartValues() {//sets the starting score to 0
+    private static void setStartValues() {//sets the starting score to 0
         categoryValueAsString = "0";
         valueInPlay = 0;
     }
@@ -145,7 +145,7 @@ public class Game {
         valueInPlay = getCategory(categoryNumber, topCard.getCategoryInPlay(categoryNumber));
     }
 
-    private void displayCurrentValue() {//displays the current category
+    private static void displayCurrentValue() {//displays the current category
         System.out.println("Category for this round is: " + categoryAsString.toUpperCase());
         System.out.println("Score to beat is: " + categoryValueAsString.toUpperCase() + "\n");
     }

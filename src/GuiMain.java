@@ -61,7 +61,7 @@ public class GuiMain extends JFrame implements ActionListener {
     static int categorySelect;
 
     public GuiMain() {
-        super("Game Play");
+        super("Mineral Super Trumps Game");
 /*
         testFrame = new JFrame();
         testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +105,7 @@ public class GuiMain extends JFrame implements ActionListener {
         /* Category Screen*/
         panelMenu.setVisible(true);
         panelMenu2.setVisible(true);
+        panelMenu.setBackground(Color.lightGray);
         frame.getContentPane().add(panelMenu, BorderLayout.NORTH);
         frame.getContentPane().add(panelMenu2, BorderLayout.CENTER);
         panelMenu.add(menuWelcome);
@@ -113,6 +114,7 @@ public class GuiMain extends JFrame implements ActionListener {
         panelMenu2.add(categoryLabel);
         panelMenu2.add(selectCategory);
         panelMenu2.add(confirmCategory);
+
         menuWelcome.setFont(f);
         menuLabel1.setFont(f2);
         //menuWelcome.setFont(menuWelcome.getFont().deriveFont(newSize));
@@ -135,7 +137,7 @@ public class GuiMain extends JFrame implements ActionListener {
         pass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Player: x has passed");
+                JOptionPane.showMessageDialog(null, "Player: x has passed"+Game.dealerId);
             }
         });
 
@@ -162,10 +164,12 @@ public class GuiMain extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (selectCategory.getSelectedItem().equals(categories[0])) {
             categorySelect = 1;
-            GuiGame.startRound();
+            Game.startRound();
             getCardButtons();
-            msg2.setText("Category: " + GuiGame.categoryAsString);
-            msg3.setText("Value to beat: " + GuiGame.categoryValueAsString);
+            //GuiGame.playersTurn();
+            msg2.setText("Category: " + Game.categoryAsString);
+            msg3.setText("Value to beat: " + Game.categoryValueAsString);
+            msg1.setText("Player: "+Game.dealerId);
             panel01.setVisible(true);
             panel02.setVisible(true);
             panelMenu.setVisible(false);
@@ -173,7 +177,9 @@ public class GuiMain extends JFrame implements ActionListener {
             repaint();
         } else if (selectCategory.getSelectedItem().equals(categories[1])) {
             categorySelect = 2;
-            GuiGame.startRound();
+            Game.startRound();
+            getCardButtons();
+            msg1.setText("Player: "+Game.dealerId);
             msg2.setText("Category: " + GuiGame.categoryAsString);
             msg3.setText("Value to beat: " + GuiGame.categoryValueAsString);
             panel01.setVisible(true);
@@ -183,7 +189,9 @@ public class GuiMain extends JFrame implements ActionListener {
             repaint();
         } else if (selectCategory.getSelectedItem().equals(categories[2])) {
             categorySelect = 3;
-            GuiGame.startRound();
+            Game.startRound();
+            getCardButtons();
+            msg1.setText("Player: "+Game.dealerId);
             msg2.setText("Category: " + GuiGame.categoryAsString);
             msg3.setText("Value to beat: " + GuiGame.categoryValueAsString);
             panel01.setVisible(true);
@@ -192,7 +200,9 @@ public class GuiMain extends JFrame implements ActionListener {
             panelMenu2.setVisible(false);
         } else if (selectCategory.getSelectedItem().equals(categories[3])) {
             categorySelect = 4;
-            GuiGame.startRound();
+            Game.startRound();
+            getCardButtons();
+            msg1.setText("Player: "+Game.dealerId);
             msg2.setText("Category: " + GuiGame.categoryAsString);
             msg3.setText("Value to beat: " + GuiGame.categoryValueAsString);
             panel01.setVisible(true);
@@ -201,7 +211,9 @@ public class GuiMain extends JFrame implements ActionListener {
             panelMenu2.setVisible(false);
         } else if (selectCategory.getSelectedItem().equals(categories[4])) {
             categorySelect = 5;
-            GuiGame.startRound();
+            Game.startRound();
+            getCardButtons();
+            msg1.setText("Player: "+Game.dealerId);
             msg2.setText("Category: " + GuiGame.categoryAsString);
             msg3.setText("Value to beat: " + GuiGame.categoryValueAsString);
             panel01.setVisible(true);
@@ -209,10 +221,7 @@ public class GuiMain extends JFrame implements ActionListener {
             panelMenu.setVisible(false);
             panelMenu2.setVisible(false);
         }
-
-
     }
-
 
     public static void main(String[] args) {
         int numPlayers;
@@ -262,7 +271,7 @@ public class GuiMain extends JFrame implements ActionListener {
     private Image displayCard(Cards card) {
         ImageIcon cardImage = new ImageIcon("images/" + card.get(card.fileName));
         Image img = cardImage.getImage();
-        Image newImg = img.getScaledInstance(135, 189, Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(136, 190, Image.SCALE_SMOOTH);
         return newImg;
 
     }

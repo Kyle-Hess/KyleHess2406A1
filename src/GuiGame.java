@@ -101,7 +101,7 @@ public class GuiGame extends JFrame implements ActionListener{
         pass.addActionListener(this);
     }
 
-    private void playersTurn() {
+    public static void playersTurn() {
         for (int i = 0; i < players.length; i++) {
             //if (!Player.pass) {
             players[i].PlayerCards(players[i]);

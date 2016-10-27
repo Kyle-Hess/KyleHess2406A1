@@ -137,7 +137,7 @@ public class GuiMain extends JFrame implements ActionListener {
         pass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Player: "+Game.dealerId);
+                JOptionPane.showMessageDialog(null, "Player: "+Game.dealerId+" has passed");
             }
         });
 
